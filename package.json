@@ -2,6 +2,7 @@
   "name": "tulsip-media",
   "version": "1.0.0",
   "private": true,
+  "main": "index.js",
   "scripts": {
     "sync:images": "node scripts/sync-images.mjs",
     "predev": "npm run sync:images",
