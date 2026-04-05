@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#140606] text-[#f3e7c5] antialiased;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10;
+}
+
+.section-y {
+  @apply py-12 lg:py-16;
+}
+
+.section-b {
+  @apply pb-12 lg:pb-16;
+}
+
+.site-theme-bg {
+  background:
+    radial-gradient(80% 120% at 70% 20%, rgba(154, 19, 19, 0.28), rgba(10, 4, 4, 0.4) 45%, rgba(9, 4, 4, 1) 100%),
+    repeating-linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      rgba(255, 255, 255, 0) 9px,
+      rgba(255, 255, 255, 0) 21px
+    ),
+    linear-gradient(125deg, #200909 0%, #260909 38%, #140505 100%);
+}
+
+.theme-muted {
+  color: #b9ac97;
+}
+
+.theme-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+}
+
+.theme-input {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f6edcf;
+}
+
+.theme-input::placeholder {
+  color: #b9ac97;
+}
+
+.theme-input option {
+  background: #2a0c0c;
+  color: #f6edcf;
+}
+
+.theme-input:focus {
+  outline: none;
+  border-color: rgba(206, 25, 25, 0.9);
+}
+
+.theme-btn-primary {
+  background: #b31313;
+  color: #fff;
+}
+
+.theme-btn-primary:hover {
+  background: #ce1919;
+}
+
+.hero-texture {
+  background:
+    radial-gradient(80% 120% at 70% 50%, rgba(167, 18, 18, 0.26), rgba(10, 4, 4, 0.35) 50%, rgba(9, 4, 4, 0.95) 100%),
+    repeating-linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 1px,
+      rgba(255, 255, 255, 0) 10px,
+      rgba(255, 255, 255, 0) 22px
+    ),
+    linear-gradient(120deg, #210909 0%, #2f0b0b 35%, #1a0707 100%);
+}
+
+.soft-outline {
+  -webkit-text-stroke: 1px rgba(168, 17, 17, 0.9);
+  color: transparent;
+}
+
+.hero-ring {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 0 22px rgba(126, 9, 9, 0.16),
+    inset 0 0 75px rgba(148, 9, 9, 0.28);
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes camera-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.camera-spin {
+  animation: camera-spin 16s linear infinite;
+}
+
+@keyframes logo-float {
+  0% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 0 rgba(206, 25, 25, 0));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 8px rgba(206, 25, 25, 0.35));
+  }
+  100% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 0 rgba(206, 25, 25, 0));
+  }
+}
+
+.logo-float {
+  animation: logo-float 3.2s ease-in-out infinite;
+}
+
+.cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    420px circle at var(--cursor-x) var(--cursor-y),
+    rgba(206, 25, 25, 0.09),
+    rgba(206, 25, 25, 0) 55%
+  );
+}
+
+.marquee-shell {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-width: 100%;
+  animation: brand-marquee 26s linear infinite;
+}
+
+@keyframes brand-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
