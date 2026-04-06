@@ -1,54 +1,41 @@
 export type ClientItem = {
   name: string;
   logo: string;
-  website: string;
-  socialProfile: string;
-  socialLabel: string;
+  website?: string;
+  socialProfile?: string;
+  socialLabel?: string;
 };
 
 // Replace logo files in /public/images/clients and keep the same path format.
-// Using local assets avoids third-party runtime failures.
 export const CLIENT_ITEMS: ClientItem[] = [
   {
-    name: "Aroma Co.",
-    logo: "/images/clients/aroma-co.png",
-    website: "https://aroma.co",
-    socialProfile: "https://instagram.com/aroma.co",
+    name: "Mother's Pride Bahadurgarh",
+    logo: "/images/clients/mothers-pride-bahadurgarh.png",
+    socialProfile: "https://www.instagram.com/tulsipmedia/",
     socialLabel: "Instagram"
   },
   {
-    name: "ZestFit",
-    logo: "/images/clients/zestfit.png",
-    website: "https://zestfit.com",
-    socialProfile: "https://linkedin.com/company/zestfit",
+    name: "Shop24 Seven Bahadurgarh",
+    logo: "/images/clients/shop24-seven-bahadurgarh.jpg",
+    socialProfile: "https://www.instagram.com/tulsipmedia/",
+    socialLabel: "Instagram"
+  },
+  {
+    name: "Shree Shyam Cricket Academy",
+    logo: "/images/clients/shree-shyam-cricket-academy.jpg",
+    socialProfile: "https://www.instagram.com/tulsipmedia/",
+    socialLabel: "Instagram"
+  },
+  {
+    name: "Ad Guru",
+    logo: "/images/clients/ad-guru.png",
+    socialProfile: "https://www.linkedin.com/in/tulsip-media-189251401",
     socialLabel: "LinkedIn"
   },
   {
-    name: "Sparkle Studio",
-    logo: "/images/clients/sparkle-studio.png",
-    website: "https://sparklestudio.com",
-    socialProfile: "https://instagram.com/sparklestudio",
+    name: "Prime Pet Care",
+    logo: "/images/clients/prime-pet-care.png",
+    socialProfile: "https://www.instagram.com/tulsipmedia/",
     socialLabel: "Instagram"
-  },
-  {
-    name: "UrbanNest",
-    logo: "/images/clients/urbannest.png",
-    website: "https://urbannest.com",
-    socialProfile: "https://linkedin.com/company/urbannest",
-    socialLabel: "LinkedIn"
-  },
-  {
-    name: "Noorani Biryani",
-    logo: "/images/clients/noorani-biryani.png",
-    website: "https://nooranibiryani.com",
-    socialProfile: "https://instagram.com/nooranibiryani",
-    socialLabel: "Instagram"
-  },
-  {
-    name: "FarmNest Foods",
-    logo: "/images/clients/farmnest-foods.png",
-    website: "https://farmnestfoods.com",
-    socialProfile: "https://facebook.com/farmnestfoods",
-    socialLabel: "Facebook"
   }
 ];

@@ -76,13 +76,13 @@ export function HeroSection() {
 
           <div className="absolute -bottom-2 left-1/2 -translate-x-[70%] rounded-md border border-white/20 bg-white/5 px-4 py-3 text-[#ece0bf] backdrop-blur sm:bottom-8">
             <p className="text-xs">GRW</p>
-            <p className="mt-1 text-base font-semibold">50+ Brands Grown</p>
+            <p className="mt-1 text-base font-semibold">5+ Brands Grown</p>
           </div>
         </div>
 
         <div className="col-span-full mt-2 grid grid-cols-3 gap-4 border-t border-white/10 pt-5 text-[#eadfb8]" data-reveal>
           <div>
-            <p className="font-display text-3xl font-semibold sm:text-4xl">50+</p>
+            <p className="font-display text-3xl font-semibold sm:text-4xl">5+</p>
             <p className="text-[10px] uppercase tracking-[0.08em] text-[#bdae8a] sm:text-xs">Brands</p>
           </div>
           <div>
@@ -98,3 +98,4 @@ export function HeroSection() {
     </section>
   );
 }
+

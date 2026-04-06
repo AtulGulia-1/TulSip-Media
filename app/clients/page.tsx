@@ -7,7 +7,7 @@ export default function ClientsPage() {
     <>
       <PageIntro
         title="Clients"
-        description="We partner with ambitious local brands across high-growth categories."
+        description="Growth partners currently managed by TulSip Media across education, retail, sports, agency, and pet-care categories."
       />
       <section className="section-shell section-b" data-reveal>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -19,25 +19,31 @@ export default function ClientsPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-2xl font-semibold text-[#f6f0cf]">{client.name}</h3>
-                  <a
-                    href={client.website}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="theme-muted text-xs underline underline-offset-4"
-                  >
-                    Visit website
-                  </a>
+                  {client.website ? (
+                    <a
+                      href={client.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="theme-muted text-xs underline underline-offset-4"
+                    >
+                      Visit website
+                    </a>
+                  ) : (
+                    <p className="theme-muted text-xs">Brand profile managed by TulSip Media</p>
+                  )}
                 </div>
               </div>
               <div className="mt-4">
-                <a
-                  href={client.socialProfile}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex rounded-sm border border-white/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f3e7c5] transition hover:bg-white/10"
-                >
-                  {client.socialLabel} Profile
-                </a>
+                {client.socialProfile && client.socialLabel ? (
+                  <a
+                    href={client.socialProfile}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-sm border border-white/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f3e7c5] transition hover:bg-white/10"
+                  >
+                    {client.socialLabel} Profile
+                  </a>
+                ) : null}
               </div>
             </article>
           ))}

@@ -10,29 +10,47 @@ export type TestimonialItem = {
 export const TESTIMONIAL_ITEMS: TestimonialItem[] = [
   {
     quote:
-      "TulSip did not just manage our social media, they transformed how people see our brand and we now get discovery-driven customers every week.",
+      "Within 60 days of structured creative testing, admission enquiries became consistent and our local visibility improved noticeably.",
     rating: 5,
-    clientName: "Priya Sharma",
-    clientRole: "Founder, Aroma Co.",
+    clientName: "Operations Team",
+    clientRole: "Mother's Pride Bahadurgarh",
     socialLabel: "Instagram",
-    socialUrl: "https://instagram.com/aroma.co"
+    socialUrl: "https://www.instagram.com/tulsipmedia/"
   },
   {
     quote:
-      "We were burning money on ads with no direction. TulSip restructured everything and we hit strong ROAS in under two months.",
+      "Our daily offer campaigns started bringing measurable footfall. The messaging became clearer and repeat buyers increased month over month.",
     rating: 5,
-    clientName: "Arjun Mehta",
-    clientRole: "CEO, ZestFit",
+    clientName: "Store Management",
+    clientRole: "Shop24 Seven Bahadurgarh",
+    socialLabel: "Instagram",
+    socialUrl: "https://www.instagram.com/tulsipmedia/"
+  },
+  {
+    quote:
+      "We now get better quality sports enquiries from the right age group. Campaigns are more focused and inquiries are easier to track.",
+    rating: 5,
+    clientName: "Admin Desk",
+    clientRole: "Shree Shyam Cricket Academy",
+    socialLabel: "Instagram",
+    socialUrl: "https://www.instagram.com/tulsipmedia/"
+  },
+  {
+    quote:
+      "TulSip improved our campaign structure and reporting discipline. Lead quality became better while ad waste reduced across platforms.",
+    rating: 5,
+    clientName: "Growth Team",
+    clientRole: "Ad Guru",
     socialLabel: "LinkedIn",
-    socialUrl: "https://linkedin.com/company/zestfit"
+    socialUrl: "https://www.linkedin.com/in/tulsip-media-189251401"
   },
   {
     quote:
-      "The rebrand quality was beyond expectations. Our positioning improved, clients trusted us faster, and our pricing power increased.",
+      "Our pet-care service campaigns now convert more reliably. Better local targeting and clearer creatives helped us scale appointments steadily.",
     rating: 5,
-    clientName: "Deepika Nair",
-    clientRole: "Owner, Sparkle Studio",
+    clientName: "Customer Success",
+    clientRole: "Prime Pet Care",
     socialLabel: "Instagram",
-    socialUrl: "https://instagram.com/sparklestudio"
+    socialUrl: "https://www.instagram.com/tulsipmedia/"
   }
 ];

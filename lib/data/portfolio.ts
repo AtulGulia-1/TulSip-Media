@@ -15,8 +15,8 @@ export type PortfolioProject = {
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     id: "local-cafe-launch",
-    name: "Local Cafe Launch",
-    result: "+280% reach",
+    name: "Shop24 Seven Bahadurgarh - Local Retail Growth",
+    result: "Reach +34%, walk-ins +21% in 60 days",
     mediaUrl: "/images/portfolio/local-cafe-launch.jpg",
     mediaType: "image",
     image: "/images/portfolio/local-cafe-launch.jpg",
@@ -25,8 +25,8 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
   {
     id: "fashion-brand-ugc",
-    name: "Fashion Brand UGC",
-    result: "4.3x ROAS",
+    name: "Mother's Pride Bahadurgarh - Admission Campaign",
+    result: "Qualified inquiries +38%, cost per lead -17%",
     mediaUrl: "/images/portfolio/fashion-brand-ugc.jpg",
     mediaType: "image",
     image: "/images/portfolio/fashion-brand-ugc.jpg",
@@ -35,8 +35,8 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
   {
     id: "healthcare-campaign",
-    name: "Healthcare Campaign",
-    result: "62% lead cost drop",
+    name: "Prime Pet Care - Performance Funnel",
+    result: "Booking conversions +27% with structured ad retargeting",
     mediaUrl: "/images/portfolio/healthcare-campaign.jpg",
     mediaType: "image",
     image: "/images/portfolio/healthcare-campaign.jpg",

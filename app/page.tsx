@@ -12,12 +12,36 @@ import { GROWTH_BRANDS } from "@/lib/data/brands";
 import { TESTIMONIAL_ITEMS } from "@/lib/data/testimonials";
 
 const RESULTS = [
-  { title: "Campaign Lift", metric: "42%", note: "Average reach growth in 90 days." },
-  { title: "Ad Efficiency", metric: "3.1x", note: "Blended ROI across paid channels." },
-  { title: "Organic Growth", metric: "68%", note: "Higher non-paid audience discovery." },
-  { title: "Lead Velocity", metric: "+124%", note: "Faster qualified lead generation." },
-  { title: "Conversion Uplift", metric: "27%", note: "Landing page conversion gains." },
-  { title: "Retention Impact", metric: "19%", note: "Month-over-month repeat engagement." }
+  {
+    title: "Meta Reach",
+    metric: "+32%",
+    note: "Average monthly reach growth across active client accounts."
+  },
+  {
+    title: "Lead Cost",
+    metric: "-18%",
+    note: "Lower CPL after audience cleanup and creative rotation."
+  },
+  {
+    title: "Qualified Leads",
+    metric: "+41%",
+    note: "Improved lead quality through offer-message alignment."
+  },
+  {
+    title: "Conversion Rate",
+    metric: "+22%",
+    note: "Landing and WhatsApp funnel improvements over 8 weeks."
+  },
+  {
+    title: "Repeat Buyers",
+    metric: "+15%",
+    note: "Retention campaigns increased repeat purchase consistency."
+  },
+  {
+    title: "Reporting Accuracy",
+    metric: "100%",
+    note: "Weekly performance tracking with clear platform-wise breakdown."
+  }
 ];
 
 export default function HomePage() {
@@ -71,7 +95,7 @@ export default function HomePage() {
         <h2 className="font-display text-[clamp(2rem,5vw,3rem)] text-[#f6f0cf]">
           What Our Clients <span className="text-[#c62828] italic">Say</span>
         </h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {TESTIMONIAL_ITEMS.map((item) => (
             <blockquote key={item.clientName} className="theme-card rounded-2xl p-5">
               <p className="text-sm tracking-[0.15em] text-[#f6f0cf]">
@@ -194,4 +218,6 @@ export default function HomePage() {
     </>
   );
 }
+
+
 
