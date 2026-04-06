@@ -42,6 +42,6 @@ export const EDITABLE_FOOTER_LINKS = [
 export const EDITABLE_SOCIAL_LINKS = [
   { label: "Instagram", key: "instagram" },
   { label: "Twitter", key: "twitter" },
-  { label: "LinkedIn", key: "linkedin" }
+  { label: "LinkedIn", key: "linkedin" },
+  { label: "Facebook", key: "facebook" }
 ] as const;
-

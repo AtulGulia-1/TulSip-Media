@@ -22,10 +22,11 @@ export const CONFIG = {
     instagram: "https://www.instagram.com/tulsipmedia/",
     twitter: "https://x.com/TulSipMedia",
     linkedin: "https://www.linkedin.com/in/tulsip-media-189251401",
-    facebook: "https://x.com/TulSipMedia",
+    facebook: "https://www.facebook.com/profile.php?id=61574364127948",
     youtube: "https://www.instagram.com/tulsipmedia/"
   },
   splineEnabled: false,
   splineSceneUrl: "https://prod.spline.design/your-scene/scene.splinecode"
 } as const;
+
 
