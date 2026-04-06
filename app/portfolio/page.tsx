@@ -5,8 +5,8 @@ import { PORTFOLIO_PROJECTS, type PortfolioProject } from "@/lib/data/portfolio"
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "A snapshot of campaigns, websites, and growth systems we shipped.",
+  title: "Work Gallery",
+  description: "A visual gallery of campaigns, creatives, websites, and growth systems we shipped.",
   alternates: { canonical: "/portfolio" }
 };
 
@@ -39,46 +39,50 @@ export default async function PortfolioPage() {
   return (
     <>
       <PageIntro
-        title="Portfolio"
-        description="A snapshot of campaigns, websites, and growth systems we shipped."
+        title="Work Gallery"
+        description="Upload unlimited snapshots from admin CMS. Layout stays consistent on all screens."
       />
       <section className="section-shell section-b grid gap-6 sm:grid-cols-2 xl:grid-cols-3" data-reveal>
-        {projects.map((project) => (
-          <article key={project.name} className="theme-card overflow-hidden rounded-2xl">
-            <div className="relative h-52 w-full bg-black/25 sm:h-56">
-              {(project.mediaType ?? "image") === "video" ? (
-                <video
-                  src={project.mediaUrl ?? project.image}
-                  controls
-                  preload="metadata"
-                  playsInline
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <SafeImage
-                  src={project.mediaUrl ?? project.image ?? "/camera-fallback.png"}
-                  alt={project.name}
-                  fill
-                  className="object-cover"
-                />
-              )}
-            </div>
-            <div className="p-4">
-              <h3 className="font-display text-2xl font-semibold text-[#f6f0cf]">{project.name}</h3>
-              <p className="mt-2 text-sm text-[#d8caad]">{project.result}</p>
-              {project.link ? (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 inline-flex text-xs font-semibold uppercase tracking-[0.08em] text-[#f3e7c5] underline underline-offset-4"
-                >
-                  View Case Study
-                </a>
-              ) : null}
-            </div>
-          </article>
-        ))}
+        {projects.map((project, index) => {
+          const snapshotTitle = `Work Snapshot ${String(index + 1).padStart(2, "0")}`;
+
+          return (
+            <article key={project.id ?? `${project.name}-${index}`} className="theme-card overflow-hidden rounded-2xl">
+              <div className="relative h-52 w-full bg-black/25 sm:h-56">
+                {(project.mediaType ?? "image") === "video" ? (
+                  <video
+                    src={project.mediaUrl ?? project.image}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <SafeImage
+                    src={project.mediaUrl ?? project.image ?? "/camera-fallback.png"}
+                    alt={snapshotTitle}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div className="p-4">
+                <h3 className="font-display text-2xl font-semibold text-[#f6f0cf]">{snapshotTitle}</h3>
+                {project.result ? <p className="mt-2 text-sm text-[#d8caad]">{project.result}</p> : null}
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-3 inline-flex text-xs font-semibold uppercase tracking-[0.08em] text-[#f3e7c5] underline underline-offset-4"
+                  >
+                    View Case Study
+                  </a>
+                ) : null}
+              </div>
+            </article>
+          );
+        })}
       </section>
     </>
   );

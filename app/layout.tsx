@@ -65,6 +65,11 @@ export const metadata: Metadata = {
     description: "We turn local brands into global attention.",
     images: [socialPreviewImage]
   },
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png", sizes: "192x192" }],
+    shortcut: ["/logo.png"],
+    apple: [{ url: "/logo.png", sizes: "180x180", type: "image/png" }]
+  },
   robots: {
     index: true,
     follow: true,
@@ -94,3 +99,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+

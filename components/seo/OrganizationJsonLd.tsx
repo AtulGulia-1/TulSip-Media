@@ -6,6 +6,7 @@ export function OrganizationJsonLd() {
     "@type": "Organization",
     name: CONFIG.brandName,
     url: CONFIG.siteUrl,
+    logo: `${CONFIG.siteUrl}/logo.png`,
     slogan: CONFIG.tagline,
     sameAs: [
       CONFIG.socialLinks.instagram,

@@ -524,12 +524,12 @@ export default async function AdminDashboardPage({
             <article className="theme-card rounded-2xl p-5">
               <h2 className="font-display text-3xl text-[#f6f0cf]">Website CMS</h2>
               <p className="theme-muted mt-2 text-sm">
-                Upload portfolio videos/images and update public showcase cards without changing layout code.
+                Upload unlimited work snapshots/videos. Only media upload is required; title and notes are optional. Layout auto-stays consistent across screens.
               </p>
               <form action={addPortfolioItemAction} className="mt-4 grid gap-3 rounded-xl border border-white/10 bg-black/15 p-4">
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <input name="title" placeholder="Portfolio title" className="theme-input rounded-lg px-3 py-2 text-sm" required />
-                  <input name="result" placeholder="Result text (e.g. 4.3x ROAS)" className="theme-input rounded-lg px-3 py-2 text-sm" required />
+                  <input name="title" placeholder="Optional title (auto-generated if blank)" className="theme-input rounded-lg px-3 py-2 text-sm" />
+                  <input name="result" placeholder="Optional note/result" className="theme-input rounded-lg px-3 py-2 text-sm" />
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <select name="media_type" className="theme-input rounded-lg px-3 py-2 text-sm">
@@ -672,6 +672,7 @@ export default async function AdminDashboardPage({
     </section>
   );
 }
+
 
 
 

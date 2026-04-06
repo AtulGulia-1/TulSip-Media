@@ -23,7 +23,7 @@ export const EDITABLE_NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Packages", href: "/packages" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Work Gallery", href: "/portfolio" },
   { label: "Team", href: "/team" },
   { label: "Brand Experience", href: "/clients" },
   { label: "Testimonials", href: "/testimonials" },
@@ -33,7 +33,7 @@ export const EDITABLE_NAV_LINKS = [
 export const EDITABLE_FOOTER_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Packages", href: "/packages" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Work Gallery", href: "/portfolio" },
   { label: "Team", href: "/team" },
   { label: "Help Center", href: "/help-center" },
   { label: "Contact", href: "/contact" }
@@ -45,3 +45,4 @@ export const EDITABLE_SOCIAL_LINKS = [
   { label: "LinkedIn", key: "linkedin" },
   { label: "Facebook", key: "facebook" }
 ] as const;
+

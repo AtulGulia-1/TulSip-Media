@@ -277,11 +277,14 @@ export async function addPortfolioItemAction(formData: FormData) {
   const sortOrder = Number(formData.get("sort_order") ?? 0);
   const isPublished = String(formData.get("is_published") ?? "on") === "on";
 
-  if (!title || !result || !mediaUrl) return;
+  if (!mediaUrl) return;
+
+  const safeTitle = title || `Work Snapshot ${new Date().toLocaleDateString("en-IN")}`;
+  const safeResult = result || "Campaign snapshot";
 
   await supabase.from("portfolio_items").insert({
-    title,
-    result,
+    title: safeTitle,
+    result: safeResult,
     media_url: mediaUrl,
     media_type: mediaType === "video" ? "video" : "image",
     external_link: externalLink || null,
@@ -303,4 +306,6 @@ export async function deletePortfolioItemAction(formData: FormData) {
   revalidatePath("/admin/dashboard");
   revalidatePath("/portfolio");
 }
+
+
 

@@ -14,9 +14,9 @@ export type PortfolioProject = {
 // the site uses database content first and keeps this as backup.
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
-    id: "local-cafe-launch",
-    name: "Shop24 Seven Bahadurgarh - Local Retail Growth",
-    result: "Reach +34%, walk-ins +21% in 60 days",
+    id: "work-snapshot-01",
+    name: "Work Snapshot 01",
+    result: "Campaign highlight and measurable growth snapshot.",
     mediaUrl: "/images/portfolio/local-cafe-launch.jpg",
     mediaType: "image",
     image: "/images/portfolio/local-cafe-launch.jpg",
@@ -24,9 +24,9 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     sortOrder: 1
   },
   {
-    id: "fashion-brand-ugc",
-    name: "Mother's Pride Bahadurgarh - Admission Campaign",
-    result: "Qualified inquiries +38%, cost per lead -17%",
+    id: "work-snapshot-02",
+    name: "Work Snapshot 02",
+    result: "Creative execution with performance outcome summary.",
     mediaUrl: "/images/portfolio/fashion-brand-ugc.jpg",
     mediaType: "image",
     image: "/images/portfolio/fashion-brand-ugc.jpg",
@@ -34,9 +34,9 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     sortOrder: 2
   },
   {
-    id: "healthcare-campaign",
-    name: "Prime Pet Care - Performance Funnel",
-    result: "Booking conversions +27% with structured ad retargeting",
+    id: "work-snapshot-03",
+    name: "Work Snapshot 03",
+    result: "Paid + organic growth sequence for local brand scale-up.",
     mediaUrl: "/images/portfolio/healthcare-campaign.jpg",
     mediaType: "image",
     image: "/images/portfolio/healthcare-campaign.jpg",
