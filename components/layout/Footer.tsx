@@ -8,18 +8,14 @@ export function Footer() {
       <div className="section-shell grid gap-6 py-8 lg:grid-cols-3">
         <div>
           <h3 className="font-display text-3xl text-[#f6f0cf]">{CONFIG.brandName}</h3>
-          <p className="theme-muted mt-2 max-w-sm text-sm">
-            {SITE_COPY.footer.description}
-          </p>
+          <p className="theme-muted mt-2 max-w-sm text-sm">{SITE_COPY.footer.description}</p>
           <p className="mt-3 text-xs text-[#e9ddba]">{CONFIG.officeAddress}</p>
           <p className="mt-1 text-xs text-[#e9ddba]">{CONFIG.contactEmail}</p>
           <p className="mt-1 text-xs text-[#e9ddba]">{CONFIG.contactPhone}</p>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#e9ddba]">
-            Quick Links
-          </h4>
+          <h4 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#e9ddba]">Quick Links</h4>
           <div className="mt-3 flex flex-wrap gap-2">
             {EDITABLE_FOOTER_LINKS.map((item) => (
               <Link
@@ -34,9 +30,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#e9ddba]">
-            Social Media
-          </h4>
+          <h4 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#e9ddba]">Social Media</h4>
           <div className="mt-3 flex flex-wrap gap-2">
             {EDITABLE_SOCIAL_LINKS.map((item) => (
               <a
@@ -50,8 +44,11 @@ export function Footer() {
               </a>
             ))}
           </div>
-          <p className="theme-muted mt-4 text-xs">
-            For quick response, use the WhatsApp CTA from the Home page.
+          <p className="theme-muted mt-4 text-xs">For quick response, use the WhatsApp CTA from the Home page.</p>
+          <p className="theme-muted mt-3 text-[11px] leading-5">
+            Work featured represents professional experience. All brand logos and names are trademarks of their
+            respective owners. TulSip Media is an independent entity and certain projects may have been executed in
+            collaboration with partner agencies.
           </p>
         </div>
       </div>

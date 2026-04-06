@@ -25,7 +25,7 @@ export const EDITABLE_NAV_LINKS = [
   { label: "Packages", href: "/packages" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Team", href: "/team" },
-  { label: "Clients", href: "/clients" },
+  { label: "Brand Experience", href: "/clients" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" }
 ] as const;
@@ -44,3 +44,4 @@ export const EDITABLE_SOCIAL_LINKS = [
   { label: "Twitter", key: "twitter" },
   { label: "LinkedIn", key: "linkedin" }
 ] as const;
+

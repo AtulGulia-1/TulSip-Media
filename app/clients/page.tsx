@@ -6,7 +6,7 @@ export default function ClientsPage() {
   return (
     <>
       <PageIntro
-        title="Clients"
+        title="Brand Experience"
         description="Growth partners currently managed by TulSip Media across education, retail, sports, agency, and pet-care categories."
       />
       <section className="section-shell section-b" data-reveal>
@@ -29,7 +29,7 @@ export default function ClientsPage() {
                       Visit website
                     </a>
                   ) : (
-                    <p className="theme-muted text-xs">Brand profile managed by TulSip Media</p>
+                    <p className="theme-muted text-xs">Digital Strategy & Execution</p>
                   )}
                 </div>
               </div>
@@ -52,3 +52,4 @@ export default function ClientsPage() {
     </>
   );
 }
+
