@@ -2,8 +2,22 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SafeImage } from "@/components/common/SafeImage";
 import { PageIntro } from "@/components/common/PageIntro";
-import { PORTFOLIO_PROJECTS, type PortfolioProject } from "@/lib/data/portfolio";
-import { createClient } from "@/lib/supabase/server";
+
+type WorkTab = "food-retail" | "services-healthcare" | "sports-b2b";
+
+type WorkCard = {
+  title: string;
+  writeup: string;
+  mediaPath: string;
+  mockup?: boolean;
+};
+
+type WorkSection = {
+  id: WorkTab;
+  label: string;
+  targetClients: string;
+  cards: WorkCard[];
+};
 
 export const metadata: Metadata = {
   title: "Work Gallery",
@@ -11,34 +25,29 @@ export const metadata: Metadata = {
   alternates: { canonical: "/portfolio" }
 };
 
-type WorkTab = "food-retail" | "services-healthcare" | "sports-b2b";
+const ALL_PORTFOLIO_IMAGES_IN_SEQUENCE = [
+  "/images/portfolio/IPL Night.png",
+  "/images/portfolio/Mojito  POV.png",
+  "/images/portfolio/Visual Appetite & Local Growth.png",
+  "/images/portfolio/Anytime Cafe  Momos.png",
+  "/images/portfolio/Navratri Special Thali.png",
+  "/images/portfolio/Admission & Enrollment Campaign.png",
+  "/images/portfolio/Academy Programs & Admissions.png",
+  "/images/portfolio/Scholarship & Entrance Exam Alerts.png",
+  "/images/portfolio/Science & Curiosity Series 1.png",
+  "/images/portfolio/Science & Curiosity Series 2.png",
+  "/images/portfolio/Science & Curiosity Series 3.png",
+  "/images/portfolio/Science & Curiosity Series 4.png",
+  "/images/portfolio/Science & Curiosity Series 5.png",
+  "/images/portfolio/Ground Booking & Lead Generation.png",
+  "/images/portfolio/B2B Service Showcase.png",
+  "/images/portfolio/Community & Festive Greetings.png",
+  "/images/portfolio/local-cafe-launch.jpg",
+  "/images/portfolio/fashion-brand-ugc.jpg",
+  "/images/portfolio/healthcare-campaign.jpg"
+] as const;
 
-type WorkCardConfig = {
-  title: string;
-  writeup: string;
-  keywords: string[];
-  fallbackMedia: string;
-  mockup?: boolean;
-};
-
-type WorkSectionConfig = {
-  id: WorkTab;
-  label: string;
-  targetClients: string;
-  cards: WorkCardConfig[];
-};
-
-type ResolvedWorkCard = {
-  id: string;
-  title: string;
-  writeup: string;
-  mediaUrl: string;
-  mediaType: "image" | "video";
-  link?: string;
-  mockup?: boolean;
-};
-
-const WORK_SECTIONS: WorkSectionConfig[] = [
+const FEATURED_SECTIONS: WorkSection[] = [
   {
     id: "food-retail",
     label: "Food, Hospitality & Retail",
@@ -48,24 +57,21 @@ const WORK_SECTIONS: WorkSectionConfig[] = [
         title: "24Seven Cafe (The Vibe Post)",
         writeup:
           "Strategic Social Media Engagement. Created high-energy, trend-based content to drive evening footfall and weekend reservations. Focused on scroll-stopping visuals that resonate with a younger, digital-first audience.",
-        keywords: ["24seven", "ipl", "mojito", "cafe", "vibe"],
-        fallbackMedia: "/images/portfolio/local-cafe-launch.jpg",
+        mediaPath: "/images/portfolio/IPL Night.png",
         mockup: true
       },
       {
         title: "Athens Pizza (The 3D Hook Post)",
         writeup:
           "Conversion-Driven Visual Design. Utilized breaking-the-4th-wall design techniques to trigger immediate cravings and increase order-now click-through rates for local delivery.",
-        keywords: ["athens", "pizza", "burger", "3d", "order"],
-        fallbackMedia: "/images/portfolio/fashion-brand-ugc.jpg",
+        mediaPath: "/images/portfolio/Visual Appetite & Local Growth.png",
         mockup: true
       },
       {
         title: "24Seven Cafe (The Menu Post)",
         writeup:
-          "Premium Brand Identity. Elevated everyday menu items through modern aesthetics and high-end typography to compete with national cafe chains.",
-        keywords: ["24seven", "menu", "anytime", "momos", "coffee"],
-        fallbackMedia: "/images/portfolio/healthcare-campaign.jpg"
+          "Premium Brand Identity. Elevated everyday menu items through modern, clean aesthetics and high-end typography to compete with national cafe chains.",
+        mediaPath: "/images/portfolio/Anytime Cafe  Momos.png"
       }
     ]
   },
@@ -75,112 +81,57 @@ const WORK_SECTIONS: WorkSectionConfig[] = [
     targetClients: "Doctors, Clinics, Schools, Academies",
     cards: [
       {
-        title: "Mother's Pride (Authority Post)",
+        title: "Mother's Pride (The Authority Post)",
         writeup:
-          "High-Ticket Lead Generation. Executed a comprehensive 2026 academic session drive, balancing CBSE authority with parent-centric trust factors to streamline the inquiry-to-admission funnel.",
-        keywords: ["mother", "pride", "school", "admission", "cbse", "2026"],
-        fallbackMedia: "/images/portfolio/local-cafe-launch.jpg",
+          "High-Ticket Lead Generation. Executed a comprehensive 2026 academic session drive. Balanced professional CBSE authority with parent-centric trust factors to streamline the inquiry-to-admission funnel.",
+        mediaPath: "/images/portfolio/Admission & Enrollment Campaign.png",
         mockup: true
       },
       {
-        title: "Tan Man Paramarsh (Clinical Post)",
+        title: "Tan Man Paramarsh (The Clinical Post)",
         writeup:
-          "Healthcare Authority and Patient Outreach. Established a trustworthy digital presence for a specialized medical practice using solution-oriented messaging for expert dermatological care.",
-        keywords: ["tan", "man", "paramarsh", "dermatology", "psoriasis", "clinic"],
-        fallbackMedia: "/images/portfolio/fashion-brand-ugc.jpg"
+          "Healthcare Authority and Patient Outreach. Established a trustworthy digital presence for a specialized medical practice. Used solution-oriented messaging to connect patients with expert dermatological care.",
+        mediaPath: "/images/portfolio/Science & Curiosity Series 1.png"
       },
       {
-        title: "Prime Pet Care (Trust Post)",
+        title: "Prime Pet Care (The Trust Post)",
         writeup:
-          "Empathy-Based Medical Branding. Combined medical authority with compassionate visual storytelling to build long-term trust with local pet owners.",
-        keywords: ["prime", "pet", "care", "vet", "golden", "retriever"],
-        fallbackMedia: "/images/portfolio/healthcare-campaign.jpg"
+          "Empathy-Based Medical Branding. Combined professional medical authority with compassionate visual storytelling to build long-term trust with local pet owners.",
+        mediaPath: "/images/portfolio/Academy Programs & Admissions.png"
       },
       {
-        title: "Prime Pet Care (Retail Post)",
+        title: "Prime Pet Care (The Retail Post)",
         writeup:
-          "Integrated E-commerce and Retail Strategy. Managed a dual-track clinic-plus-retail model with urgency triggers to drive physical store sales.",
-        keywords: ["prime", "pet", "20%", "dog", "food", "retail"],
-        fallbackMedia: "/images/portfolio/local-cafe-launch.jpg"
+          "Integrated E-commerce and Retail Strategy. Successfully managed a dual-track strategy for a clinic-plus-retail model, using urgency triggers to drive physical store sales.",
+        mediaPath: "/images/portfolio/Scholarship & Entrance Exam Alerts.png"
       }
     ]
   },
   {
     id: "sports-b2b",
     label: "Sports, Events & Agency B2B",
-    targetClients: "Sports Complexes, Agencies, Corporate Brands",
+    targetClients: "Sports Complexes, Other Agencies, Corporate Brands",
     cards: [
       {
-        title: "SSCA Cricket Academy (High-Energy Post)",
+        title: "SSCA Cricket Academy (The High-Energy Post)",
         writeup:
-          "Facility Marketing and Slot Optimization. Managed digital bookings for a premier sports facility using athletic high-contrast imagery for night matches and training demand.",
-        keywords: ["ssca", "cricket", "academy", "floodlight", "ground", "booking"],
-        fallbackMedia: "/images/portfolio/fashion-brand-ugc.jpg",
+          "Facility Marketing and Slot Optimization. Managed digital bookings for a premier sports facility. Used athletic, high-contrast imagery to position the academy as the top choice for night-matches and professional training.",
+        mediaPath: "/images/portfolio/Ground Booking & Lead Generation.png",
         mockup: true
       },
       {
-        title: "Ad Guru (Expert Partner Post)",
+        title: "Ad Guru (The Expert Partner Post)",
         writeup:
-          "Agency-Level Strategic Collaboration. Trusted by industry partners to deliver high-volume, professional advertising assets and complex service-catalog campaigns.",
-        keywords: ["ad guru", "business cards", "india", "victory", "agency"],
-        fallbackMedia: "/images/portfolio/healthcare-campaign.jpg"
+          "Agency-Level Strategic Collaboration. Trusted by industry partners to deliver high-volume, professional advertising assets. Demonstrated ability to manage complex service catalogs and large-scale creative celebrations.",
+        mediaPath: "/images/portfolio/B2B Service Showcase.png"
       }
     ]
   }
 ];
 
-function normalize(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-}
-
-function buildLiveProjects(rows: Array<Record<string, unknown>> | null): PortfolioProject[] {
-  if (!rows?.length) return [];
-  return rows.map((row) => ({
-    id: String(row.id ?? ""),
-    name: String(row.title ?? ""),
-    result: String(row.result ?? ""),
-    mediaUrl: String(row.media_url ?? ""),
-    mediaType: row.media_type === "video" ? "video" : "image",
-    link: row.external_link ? String(row.external_link) : undefined,
-    isPublished: Boolean(row.is_published),
-    sortOrder: Number(row.sort_order ?? 0)
-  }));
-}
-
-function resolveCards(
-  section: WorkSectionConfig,
-  projects: PortfolioProject[],
-  usedProjectIds: Set<string>
-): ResolvedWorkCard[] {
-  return section.cards.map((card, index) => {
-    const hit = projects.find((project) => {
-      if (!project.mediaUrl || !project.id || usedProjectIds.has(project.id)) return false;
-      const haystack = normalize(`${project.name} ${project.result}`);
-      return card.keywords.some((keyword) => haystack.includes(normalize(keyword)));
-    });
-
-    if (hit?.id) {
-      usedProjectIds.add(hit.id);
-    }
-
-    const mediaUrl = hit?.mediaUrl || card.fallbackMedia;
-    const mediaType = hit?.mediaType === "video" ? "video" : "image";
-
-    return {
-      id: hit?.id || `${section.id}-${index}`,
-      title: card.title,
-      writeup: card.writeup,
-      mediaUrl,
-      mediaType,
-      link: hit?.link,
-      mockup: card.mockup
-    };
-  });
-}
-
 function getActiveTab(rawTab?: string): WorkTab {
-  const allowedTabs: WorkTab[] = ["food-retail", "services-healthcare", "sports-b2b"];
-  return allowedTabs.includes(rawTab as WorkTab) ? (rawTab as WorkTab) : "food-retail";
+  const tabs: WorkTab[] = ["food-retail", "services-healthcare", "sports-b2b"];
+  return tabs.includes(rawTab as WorkTab) ? (rawTab as WorkTab) : "food-retail";
 }
 
 export default async function PortfolioPage({
@@ -191,25 +142,9 @@ export default async function PortfolioPage({
   const resolvedSearchParams = await searchParams;
   const activeTab = getActiveTab(resolvedSearchParams?.tab);
 
-  const supabase = await createClient();
-  const { data: portfolioRows } = await supabase
-    .from("portfolio_items")
-    .select("id,title,result,media_url,media_type,external_link,is_published,sort_order")
-    .eq("is_published", true)
-    .order("sort_order", { ascending: true })
-    .order("created_at", { ascending: false });
-
-  const liveProjects = buildLiveProjects(portfolioRows as Array<Record<string, unknown>> | null);
-  const projects = liveProjects.length ? liveProjects : PORTFOLIO_PROJECTS;
-
-  const usedProjectIds = new Set<string>();
-  const resolvedBySection = WORK_SECTIONS.map((section) => ({
-    ...section,
-    cards: resolveCards(section, projects, usedProjectIds)
-  }));
-
-  const activeSection = resolvedBySection.find((section) => section.id === activeTab) ?? resolvedBySection[0];
-  const extraSnapshots = projects.filter((project) => !project.id || !usedProjectIds.has(project.id));
+  const activeSection = FEATURED_SECTIONS.find((section) => section.id === activeTab) ?? FEATURED_SECTIONS[0];
+  const featuredPaths = new Set(FEATURED_SECTIONS.flatMap((section) => section.cards.map((card) => card.mediaPath)));
+  const moreSnapshots = ALL_PORTFOLIO_IMAGES_IN_SEQUENCE.filter((path) => !featuredPaths.has(path));
 
   return (
     <>
@@ -220,7 +155,7 @@ export default async function PortfolioPage({
 
       <section className="section-shell section-b" data-reveal>
         <div className="mb-6 flex flex-wrap gap-2">
-          {resolvedBySection.map((section) => {
+          {FEATURED_SECTIONS.map((section) => {
             const isActive = section.id === activeSection.id;
             return (
               <Link
@@ -245,50 +180,22 @@ export default async function PortfolioPage({
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {activeSection.cards.map((card) => (
-            <article key={card.id} className="theme-card overflow-hidden rounded-2xl">
+            <article key={card.title} className="theme-card overflow-hidden rounded-2xl">
               <div className={`relative ${card.mockup ? "bg-black/40 p-3" : "h-52 bg-black/25 sm:h-56"}`}>
                 {card.mockup ? (
                   <div className="relative mx-auto h-56 w-[min(260px,80%)] rounded-[2rem] border border-white/20 bg-black/70 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:h-60">
                     <div className="absolute left-1/2 top-2 h-1 w-14 -translate-x-1/2 rounded-full bg-white/20" />
                     <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
-                      {card.mediaType === "video" ? (
-                        <video
-                          src={card.mediaUrl}
-                          controls
-                          preload="metadata"
-                          playsInline
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <SafeImage src={card.mediaUrl} alt={card.title} fill className="object-cover" />
-                      )}
+                      <SafeImage src={card.mediaPath} fallbackSrc="/images/portfolio/IPL Night.png" alt={card.title} fill className="object-cover" />
                     </div>
                   </div>
-                ) : card.mediaType === "video" ? (
-                  <video
-                    src={card.mediaUrl}
-                    controls
-                    preload="metadata"
-                    playsInline
-                    className="h-full w-full object-cover"
-                  />
                 ) : (
-                  <SafeImage src={card.mediaUrl} alt={card.title} fill className="object-cover" />
+                  <SafeImage src={card.mediaPath} fallbackSrc="/images/portfolio/IPL Night.png" alt={card.title} fill className="object-cover" />
                 )}
               </div>
               <div className="p-4">
                 <h3 className="font-display text-2xl font-semibold text-[#f6f0cf]">{card.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-[#d8caad]">{card.writeup}</p>
-                {card.link ? (
-                  <a
-                    href={card.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex text-xs font-semibold uppercase tracking-[0.08em] text-[#f3e7c5] underline underline-offset-4"
-                  >
-                    View Live Snapshot
-                  </a>
-                ) : null}
               </div>
             </article>
           ))}
@@ -304,31 +211,20 @@ export default async function PortfolioPage({
           </div>
         </div>
 
-        {extraSnapshots.length ? (
-          <div className="mt-8 rounded-2xl border border-white/10 bg-black/20 p-5">
-            <h3 className="font-display text-3xl text-[#f6f0cf]">More Work Snapshots</h3>
-            <p className="mt-1 text-sm text-[#d8caad]">All additional uploads auto-appear here with the same responsive layout.</p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {extraSnapshots.map((project, index) => (
-                <article key={project.id ?? `${project.name}-${index}`} className="overflow-hidden rounded-xl border border-white/10 bg-black/25">
-                  <div className="relative h-44 w-full">
-                    {(project.mediaType ?? "image") === "video" ? (
-                      <video src={project.mediaUrl ?? project.image} controls preload="metadata" playsInline className="h-full w-full object-cover" />
-                    ) : (
-                      <SafeImage
-                        src={project.mediaUrl ?? project.image ?? "/camera-fallback.png"}
-                        alt={`Additional snapshot ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
-                  </div>
-                  <div className="p-3 text-xs uppercase tracking-[0.08em] text-[#d8caad]">Snapshot {String(index + 1).padStart(2, "0")}</div>
-                </article>
-              ))}
-            </div>
+        <div className="mt-8 rounded-2xl border border-white/10 bg-black/20 p-5">
+          <h3 className="font-display text-3xl text-[#f6f0cf]">More Work Snapshots</h3>
+          <p className="mt-1 text-sm text-[#d8caad]">Photos are shown in your fixed sequence to preserve visual storytelling.</p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {moreSnapshots.map((path, index) => (
+              <article key={path} className="overflow-hidden rounded-xl border border-white/10 bg-black/25">
+                <div className="relative h-44 w-full">
+                  <SafeImage src={path} fallbackSrc="/images/portfolio/IPL Night.png" alt={`Work snapshot ${index + 1}`} fill className="object-cover" />
+                </div>
+                <div className="p-3 text-xs uppercase tracking-[0.08em] text-[#d8caad]">Snapshot {String(index + 1).padStart(2, "0")}</div>
+              </article>
+            ))}
           </div>
-        ) : null}
+        </div>
 
         <p className="mt-8 text-xs leading-6 text-[#9f9682]">
           TulSip Media is an independent digital agency. The work displayed in this portfolio represents professional projects executed by our team. All trademarks and brand logos remain the property of their respective owners.
