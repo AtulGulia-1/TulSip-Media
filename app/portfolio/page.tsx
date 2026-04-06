@@ -35,16 +35,14 @@ const ALL_PORTFOLIO_IMAGES_IN_SEQUENCE = [
   "/images/portfolio/Academy Programs & Admissions.png",
   "/images/portfolio/Scholarship & Entrance Exam Alerts.png",
   "/images/portfolio/Science & Curiosity Series 1.png",
-  "/images/portfolio/Science & Curiosity Series 2.png",
-  "/images/portfolio/Science & Curiosity Series 3.png",
+  "/images/portfolio/Trust Post.png",
+  "/images/portfolio/Retail Post.png",
   "/images/portfolio/Science & Curiosity Series 4.png",
   "/images/portfolio/Science & Curiosity Series 5.png",
   "/images/portfolio/Ground Booking & Lead Generation.png",
   "/images/portfolio/B2B Service Showcase.png",
   "/images/portfolio/Community & Festive Greetings.png",
-  "/images/portfolio/local-cafe-launch.jpg",
-  "/images/portfolio/fashion-brand-ugc.jpg",
-  "/images/portfolio/healthcare-campaign.jpg"
+  "/images/portfolio/The Clinical Post.png"
 ] as const;
 
 const FEATURED_SECTIONS: WorkSection[] = [
@@ -71,7 +69,8 @@ const FEATURED_SECTIONS: WorkSection[] = [
         title: "24Seven Cafe (The Menu Post)",
         writeup:
           "Premium Brand Identity. Elevated everyday menu items through modern, clean aesthetics and high-end typography to compete with national cafe chains.",
-        mediaPath: "/images/portfolio/Anytime Cafe  Momos.png"
+        mediaPath: "/images/portfolio/Anytime Cafe  Momos.png",
+        mockup: true
       }
     ]
   },
@@ -91,19 +90,22 @@ const FEATURED_SECTIONS: WorkSection[] = [
         title: "Tan Man Paramarsh (The Clinical Post)",
         writeup:
           "Healthcare Authority and Patient Outreach. Established a trustworthy digital presence for a specialized medical practice. Used solution-oriented messaging to connect patients with expert dermatological care.",
-        mediaPath: "/images/portfolio/Science & Curiosity Series 1.png"
+        mediaPath: "/images/portfolio/The Clinical Post.png",
+        mockup: true
       },
       {
         title: "Prime Pet Care (The Trust Post)",
         writeup:
           "Empathy-Based Medical Branding. Combined professional medical authority with compassionate visual storytelling to build long-term trust with local pet owners.",
-        mediaPath: "/images/portfolio/Academy Programs & Admissions.png"
+        mediaPath: "/images/portfolio/Trust Post.png",
+        mockup: true
       },
       {
         title: "Prime Pet Care (The Retail Post)",
         writeup:
           "Integrated E-commerce and Retail Strategy. Successfully managed a dual-track strategy for a clinic-plus-retail model, using urgency triggers to drive physical store sales.",
-        mediaPath: "/images/portfolio/Scholarship & Entrance Exam Alerts.png"
+        mediaPath: "/images/portfolio/Retail Post.png",
+        mockup: true
       }
     ]
   },
@@ -123,7 +125,8 @@ const FEATURED_SECTIONS: WorkSection[] = [
         title: "Ad Guru (The Expert Partner Post)",
         writeup:
           "Agency-Level Strategic Collaboration. Trusted by industry partners to deliver high-volume, professional advertising assets. Demonstrated ability to manage complex service catalogs and large-scale creative celebrations.",
-        mediaPath: "/images/portfolio/B2B Service Showcase.png"
+        mediaPath: "/images/portfolio/B2B Service Showcase.png",
+        mockup: true
       }
     ]
   }
@@ -181,17 +184,19 @@ export default async function PortfolioPage({
         <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {activeSection.cards.map((card) => (
             <article key={card.title} className="theme-card overflow-hidden rounded-2xl">
-              <div className={`relative ${card.mockup ? "bg-black/40 p-3" : "h-52 bg-black/25 sm:h-56"}`}>
-                {card.mockup ? (
-                  <div className="relative mx-auto h-56 w-[min(260px,80%)] rounded-[2rem] border border-white/20 bg-black/70 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:h-60">
-                    <div className="absolute left-1/2 top-2 h-1 w-14 -translate-x-1/2 rounded-full bg-white/20" />
-                    <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
-                      <SafeImage src={card.mediaPath} fallbackSrc="/images/portfolio/IPL Night.png" alt={card.title} fill className="object-cover" />
-                    </div>
+              <div className="relative bg-black/40 p-3">
+                <div className="relative mx-auto h-56 w-[min(260px,80%)] rounded-[2rem] border border-white/20 bg-black/70 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:h-60">
+                  <div className="absolute left-1/2 top-2 h-1 w-14 -translate-x-1/2 rounded-full bg-white/20" />
+                  <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
+                    <SafeImage
+                      src={card.mediaPath}
+                      fallbackSrc="/images/portfolio/IPL Night.png"
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                ) : (
-                  <SafeImage src={card.mediaPath} fallbackSrc="/images/portfolio/IPL Night.png" alt={card.title} fill className="object-cover" />
-                )}
+                </div>
               </div>
               <div className="p-4">
                 <h3 className="font-display text-2xl font-semibold text-[#f6f0cf]">{card.title}</h3>
@@ -233,3 +238,4 @@ export default async function PortfolioPage({
     </>
   );
 }
+
