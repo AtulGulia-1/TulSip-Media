@@ -21,17 +21,17 @@ export async function POST(request: Request) {
 
     if (process.env.SUPABASE_SERVICE_ROLE_KEY) {
       const admin = createAdminClient();
-      // Optional table: if missing in DB, we continue gracefully.
-      await admin
-        .from("feedback_submissions")
-        .insert({
+      // Optional table: if missing in DB, continue gracefully.
+      try {
+        await admin.from("feedback_submissions").insert({
           name: name || null,
           email,
           rating: Number.isFinite(rating) ? Math.max(1, Math.min(5, rating)) : 5,
           message
-        })
-        .then(() => undefined)
-        .catch(() => undefined);
+        });
+      } catch {
+        // no-op
+      }
     }
 
     await sendFeedbackReceiptEmail({ email, name: name || undefined });
@@ -40,4 +40,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Failed to submit feedback" }, { status: 500 });
   }
 }
-

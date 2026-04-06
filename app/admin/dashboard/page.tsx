@@ -54,15 +54,16 @@ function getActiveTab(input?: string): AdminTab {
 export default async function AdminDashboardPage({
   searchParams
 }: {
-  searchParams?: { tab?: string; client?: string };
+  searchParams?: Promise<{ tab?: string; client?: string }>;
 }) {
+  const resolvedSearchParams = await searchParams;
   const supabase = await createClient();
   const { user, profile } = await getCurrentProfile();
 
   if (!user) redirect("/admin/login?next=/admin/dashboard");
   if (!profile || !["owner", "admin", "manager"].includes(profile.role)) redirect("/dashboard");
 
-  const activeTab = getActiveTab(searchParams?.tab);
+  const activeTab = getActiveTab(resolvedSearchParams?.tab);
 
   const { data: clients } = await supabase
     .from("clients")
@@ -70,8 +71,8 @@ export default async function AdminDashboardPage({
     .order("created_at", { ascending: false });
 
   const selectedClientId =
-    searchParams?.client && clients?.some((client) => client.id === searchParams.client)
-      ? searchParams.client
+    resolvedSearchParams?.client && clients?.some((client) => client.id === resolvedSearchParams?.client)
+      ? resolvedSearchParams?.client
       : clients?.[0]?.id;
 
   const selectedClient = clients?.find((client) => client.id === selectedClientId);
@@ -671,3 +672,6 @@ export default async function AdminDashboardPage({
     </section>
   );
 }
+
+
+

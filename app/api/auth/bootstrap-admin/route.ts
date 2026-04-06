@@ -39,6 +39,8 @@ export async function POST() {
 
     let role = ownerEmails.has(email) ? "owner" : adminEmails.has(email) ? "admin" : null;
 
+    const admin = createAdminClient();
+
     // Safe first-boot fallback: if no privileged user exists yet, first admin login becomes owner.
     if (!role) {
       const { count: privilegedCount } = await admin
@@ -53,8 +55,6 @@ export async function POST() {
     if (!role) {
       return NextResponse.json({ ok: false, error: "Email is not in allowed admin list" }, { status: 403 });
     }
-
-    const admin = createAdminClient();
     const { data: existingProfile, error: profileReadError } = await admin
       .from("users")
       .select("id,role")
@@ -122,3 +122,5 @@ export async function POST() {
     return NextResponse.json({ ok: false, error: "Unable to bootstrap admin role" }, { status: 500 });
   }
 }
+
+

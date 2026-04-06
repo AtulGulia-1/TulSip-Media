@@ -47,8 +47,9 @@ function getActiveTab(input?: string): DashboardTab {
 export default async function DashboardPage({
   searchParams
 }: {
-  searchParams?: { tab?: string };
+  searchParams?: Promise<{ tab?: string }>;
 }) {
+  const resolvedSearchParams = await searchParams;
   const supabase = await createClient();
   const { user, profile } = await getCurrentProfile();
 
@@ -60,7 +61,7 @@ export default async function DashboardPage({
     redirect("/login?error=invalid_portal");
   }
 
-  const activeTab = getActiveTab(searchParams?.tab);
+  const activeTab = getActiveTab(resolvedSearchParams?.tab);
 
   const { data: activeClient } = await supabase
     .from("clients")
@@ -609,3 +610,5 @@ export default async function DashboardPage({
     </section>
   );
 }
+
+

@@ -248,7 +248,7 @@ export async function upsertStaffRoleAction(formData: FormData) {
       password,
       email_confirm: true
     });
-    authUser = created.data.user ?? null;
+    authUser = created.data.user ?? undefined;
   } else if (password && password.length >= 8) {
     await admin.auth.admin.updateUserById(authUser.id, { password, email_confirm: true });
   }
@@ -303,3 +303,4 @@ export async function deletePortfolioItemAction(formData: FormData) {
   revalidatePath("/admin/dashboard");
   revalidatePath("/portfolio");
 }
+
