@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
@@ -70,9 +71,7 @@ export function StorageUploadField({
 
   return (
     <div className="grid gap-2">
-      <label className="text-xs font-semibold uppercase tracking-[0.08em] text-[#bdae8a]">
-        {label}
-      </label>
+      <label className="text-xs font-semibold uppercase tracking-[0.08em] text-[#bdae8a]">{label}</label>
       <input type="hidden" name={name} value={url} />
       <input
         type="file"
@@ -87,11 +86,14 @@ export function StorageUploadField({
         className="theme-input rounded-lg px-3 py-2 text-xs"
       />
       {message && <p className="text-xs text-[#cdbf9f]">{loading ? "Uploading..." : message}</p>}
-      {url && isImage && <img src={url} alt="Uploaded preview" className="h-16 w-16 rounded-lg object-cover" />}
+      {url && isImage && (
+        <div className="relative h-16 w-16 overflow-hidden rounded-lg border border-white/10">
+          <Image src={url} alt="Uploaded preview" fill className="object-cover" sizes="64px" unoptimized />
+        </div>
+      )}
       {url && isVideo && (
         <video src={url} controls className="h-20 w-32 rounded-lg border border-white/10 bg-black/40" />
       )}
     </div>
   );
 }
-

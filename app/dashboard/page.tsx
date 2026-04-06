@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { LogoutButton } from "@/components/auth/LogoutButton";
 import { PortalPlanPurchase } from "@/components/dashboard/PortalPlanPurchase";
 import { StorageUploadField } from "@/components/common/StorageUploadField";
@@ -176,11 +177,16 @@ export default async function DashboardPage({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           {profile.avatar_url ? (
-            <img
-              src={profile.avatar_url}
-              alt={profile.full_name}
-              className="h-14 w-14 rounded-full border border-white/20 object-cover"
-            />
+            <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white/20">
+              <Image
+                src={profile.avatar_url}
+                alt={profile.full_name}
+                fill
+                className="object-cover"
+                sizes="56px"
+                unoptimized
+              />
+            </div>
           ) : (
             <div className="grid h-14 w-14 place-items-center rounded-full border border-white/20 bg-white/5 text-sm font-semibold text-[#f3e7c5]">
               {(profile.full_name ?? "C").slice(0, 1).toUpperCase()}
@@ -610,5 +616,7 @@ export default async function DashboardPage({
     </section>
   );
 }
+
+
 
 

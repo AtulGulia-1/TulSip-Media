@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { SafeImage } from "@/components/common/SafeImage";
 import { PageIntro } from "@/components/common/PageIntro";
 import { PORTFOLIO_PROJECTS, type PortfolioProject } from "@/lib/data/portfolio";
 import { createClient } from "@/lib/supabase/server";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description: "A snapshot of campaigns, websites, and growth systems we shipped.",
+  alternates: { canonical: "/portfolio" }
+};
 
 export default async function PortfolioPage() {
   const supabase = await createClient();

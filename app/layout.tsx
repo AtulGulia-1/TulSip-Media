@@ -23,6 +23,8 @@ const cormorant = Cormorant_Garamond({
   weight: ["500", "600", "700"]
 });
 
+const socialPreviewImage = "/logo.png";
+
 export const metadata: Metadata = {
   metadataBase: new URL(CONFIG.siteUrl),
   title: {
@@ -30,6 +32,14 @@ export const metadata: Metadata = {
     template: "%s | TulSip Media"
   },
   description: "Performance-first digital marketing agency and client portal.",
+  keywords: [
+    "digital marketing agency",
+    "social media marketing",
+    "performance marketing",
+    "local business marketing",
+    "SEO services",
+    "TulSip Media"
+  ],
   alternates: {
     canonical: "/"
   },
@@ -39,12 +49,21 @@ export const metadata: Metadata = {
     url: CONFIG.siteUrl,
     siteName: "TulSip Media",
     locale: "en_IN",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: socialPreviewImage,
+        width: 1200,
+        height: 630,
+        alt: "TulSip Media"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "TulSip Media | Local brands. Global Voices.",
-    description: "We turn local brands into global attention."
+    description: "We turn local brands into global attention.",
+    images: [socialPreviewImage]
   },
   robots: {
     index: true,

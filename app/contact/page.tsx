@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { PageIntro } from "@/components/common/PageIntro";
 import Link from "next/link";
 import ContactInquiryForm from "@/components/common/ContactInquiryForm";
 import { CONFIG } from "@/lib/config";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Tell us about your brand goals and we will propose a performance roadmap.",
+  alternates: { canonical: "/contact" }
+};
 
 export default function ContactPage() {
   const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(
