@@ -42,7 +42,7 @@ export function ContactInquiryForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="theme-card grid gap-4 rounded-2xl p-6">
+    <form id="contact-form" onSubmit={onSubmit} className="theme-card grid gap-4 rounded-2xl p-6">
       <input
         type="text"
         name="name"
@@ -77,3 +77,4 @@ export function ContactInquiryForm() {
 }
 
 export default ContactInquiryForm;
+

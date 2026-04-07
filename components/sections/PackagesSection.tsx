@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { PACKAGE_PLANS } from "@/lib/data/packages";
 import { CONFIG } from "@/lib/config";
@@ -37,7 +38,7 @@ export function PackagesSection() {
         </p>
         {paymentsDisabled && (
           <p className="inline-flex rounded-sm border border-[#f6f0cf]/30 bg-black/20 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#f6f0cf]">
-            Payments are temporarily disabled.
+            Payments are paused. Book a free audit to reserve your slot.
           </p>
         )}
       </div>
@@ -70,14 +71,23 @@ export function PackagesSection() {
               ))}
             </ul>
 
-            <button
-              type="button"
-              onClick={() => setSelectedPlanId(plan.id)}
-              disabled={paymentsDisabled || selectedPlanId === plan.id}
-              className="mt-6 inline-flex rounded-sm border border-[#ce1919] px-4 py-2 text-sm font-semibold text-[#f6f0cf] transition hover:bg-[#ce1919] hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {paymentsDisabled ? "Temporarily Unavailable" : "Choose Plan"}
-            </button>
+            {paymentsDisabled ? (
+              <Link
+                href="/contact#contact-form"
+                className="mt-6 inline-flex rounded-sm border border-[#ce1919] px-4 py-2 text-sm font-semibold text-[#f6f0cf] transition hover:bg-[#ce1919] hover:text-white"
+              >
+                Book Free Audit
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setSelectedPlanId(plan.id)}
+                disabled={selectedPlanId === plan.id}
+                className="mt-6 inline-flex rounded-sm border border-[#ce1919] px-4 py-2 text-sm font-semibold text-[#f6f0cf] transition hover:bg-[#ce1919] hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Choose Plan
+              </button>
+            )}
           </article>
         ))}
       </div>
