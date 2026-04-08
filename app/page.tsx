@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
 import { HomeStickyCta } from "@/components/common/HomeStickyCta";
 import { LazyCamera3D } from "@/components/3d/LazyCamera3D";
@@ -104,7 +104,7 @@ const CASE_STUDIES = [
     brandType: "Education",
     challenge: "Strong interest, weak inquiry-to-admission conversion.",
     changed: "Landing clarity, retargeting content, and WhatsApp follow-up touchpoints.",
-    result: "Qualified inquiries: [ADD APPROVED METRIC] | CPL: [ADD APPROVED METRIC]",
+    result: "Qualified inquiries: [ADD: % increase OR number] | CPL: [ADD: % reduction OR value]",
     thumbnail: "/images/portfolio/Admission & Enrollment Campaign.png"
   },
   {
@@ -112,7 +112,7 @@ const CASE_STUDIES = [
     brandType: "Retail",
     challenge: "High visibility, weak repeat action.",
     changed: "Social proof sequencing, offer layering, and retention-oriented campaigns.",
-    result: "Repeat customer actions: [ADD APPROVED METRIC] | Remarketing ROAS: [ADD APPROVED METRIC]",
+    result: "Repeat customer actions: [ADD: % increase OR frequency change] | Remarketing ROAS: [ADD: value like 3.2x OR % improvement]",
     thumbnail: "/images/portfolio/Anytime Cafe  Momos.png"
   },
   {
@@ -120,7 +120,7 @@ const CASE_STUDIES = [
     brandType: "Service",
     challenge: "Referral-heavy pipeline with inconsistent lead flow.",
     changed: "Positioning refresh, search visibility improvements, and conversion path redesign.",
-    result: "Monthly inquiries: [ADD APPROVED METRIC] | Conversion rate: [ADD APPROVED METRIC]",
+    result: "Monthly inquiries: [ADD: number OR % increase] | Conversion rate: [ADD: % OR improvement]",
     thumbnail: "/images/portfolio/Trust Post.png"
   }
 ] as const;
@@ -153,7 +153,7 @@ export default function HomePage() {
   const logoGrid = [...CLIENT_ITEMS];
   while (logoGrid.length < 10) {
     logoGrid.push({
-      name: `[ADD CLIENT LOGO ${logoGrid.length + 1}]`,
+      name: `[LOGO ${logoGrid.length + 1}]`,
       logo: "/logo.png"
     });
   }
@@ -214,7 +214,7 @@ export default function HomePage() {
                   <p className="text-sm font-semibold text-[#f6f0cf]">5 journey touchpoints tracked weekly</p>
                 </div>
               </div>
-              <p className="mt-3 text-[11px] uppercase tracking-[0.08em] text-[#9d937f]">*Context varies by category and baseline. [ADD APPROVED METRIC]</p>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.08em] text-[#9d937f]">*Context varies by category and baseline. [ADD APPROVED METRIC SOURCE]</p>
             </div>
 
             <div className="lg:col-span-3 lg:self-center">
@@ -318,7 +318,7 @@ export default function HomePage() {
                   <p className="theme-muted mt-3 text-sm leading-7">{service.body}</p>
                   <div className="mt-5 flex flex-wrap gap-4 text-xs font-semibold uppercase tracking-[0.08em] text-[#f3e7c5]">
                     <Link href={`/services#${service.id}`} className="underline underline-offset-4">{service.linkLabel}</Link>
-                    <span>See what’s included</span>
+                    <span>See whatâ€™s included</span>
                   </div>
                 </article>
               );
@@ -387,10 +387,10 @@ export default function HomePage() {
                 <p className="text-sm tracking-[0.16em] text-[#f6f0cf]">{"\u2605".repeat(featuredTestimonial.rating)}</p>
               </div>
               <p className="mt-4 max-w-[760px] font-display text-[clamp(1.5rem,3vw,2.3rem)] leading-tight text-[#f6f0cf]">
-                “{featuredTestimonial.quote}”
+                â€œ{featuredTestimonial.quote}â€
               </p>
               <p className="theme-muted mt-4 text-sm">
-                {featuredTestimonial.clientName} • {featuredTestimonial.clientRole}
+                {featuredTestimonial.clientName} â€¢ {featuredTestimonial.clientRole}
               </p>
             </blockquote>
           )}
@@ -402,7 +402,7 @@ export default function HomePage() {
                   <InitialBadge name={item.clientName} />
                   <p className="text-sm tracking-[0.16em] text-[#f6f0cf]">{"\u2605".repeat(item.rating)}</p>
                 </div>
-                <p className="theme-muted mt-3 text-sm leading-7">“{item.quote}”</p>
+                <p className="theme-muted mt-3 text-sm leading-7">â€œ{item.quote}â€</p>
                 <p className="mt-3 text-sm font-semibold text-[#f6f0cf]">{item.clientName}</p>
                 <p className="theme-muted text-xs">{item.clientRole}</p>
               </blockquote>
@@ -507,6 +507,7 @@ export default function HomePage() {
     </>
   );
 }
+
 
 
 
