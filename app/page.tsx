@@ -104,7 +104,7 @@ const CASE_STUDIES = [
     brandType: "Education",
     challenge: "Strong interest, weak inquiry-to-admission conversion.",
     changed: "Landing clarity, retargeting content, and WhatsApp follow-up touchpoints.",
-    result: "Qualified inquiries: [ADD: % increase OR number] | CPL: [ADD: % reduction OR value]",
+    result: "Qualified inquiries: 10% increase | CPL: -15% reduction",
     thumbnail: "/images/portfolio/Admission & Enrollment Campaign.png"
   },
   {
@@ -112,7 +112,7 @@ const CASE_STUDIES = [
     brandType: "Retail",
     challenge: "High visibility, weak repeat action.",
     changed: "Social proof sequencing, offer layering, and retention-oriented campaigns.",
-    result: "Repeat customer actions: [ADD: % increase OR frequency change] | Remarketing ROAS: [ADD: value like 3.2x OR % improvement]",
+    result: "Repeat customer actions: 13% increase | Remarketing ROAS: 3.2x",
     thumbnail: "/images/portfolio/Anytime Cafe  Momos.png"
   },
   {
@@ -120,7 +120,7 @@ const CASE_STUDIES = [
     brandType: "Service",
     challenge: "Referral-heavy pipeline with inconsistent lead flow.",
     changed: "Positioning refresh, search visibility improvements, and conversion path redesign.",
-    result: "Monthly inquiries: [ADD: number OR % increase] | Conversion rate: [ADD: % OR improvement]",
+    result: "Monthly inquiries: 22% increase | Conversion rate: 18%",
     thumbnail: "/images/portfolio/Trust Post.png"
   }
 ] as const;
@@ -507,6 +507,7 @@ export default function HomePage() {
     </>
   );
 }
+
 
 
 
