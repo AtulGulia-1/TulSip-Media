@@ -1,16 +1,16 @@
-export const SITE_COPY = {
+﻿export const SITE_COPY = {
   hero: {
-    badge: "Digital Marketing Agency - India",
+    badge: "Research-led digital growth for local-first brands",
     line1: "Local Brands.",
     highlight: "Global",
     line2: "Voices.",
     description:
-      "We transform local businesses into globally recognized brands through precision marketing, scroll-stopping creatives, and data-backed growth strategies.",
-    primaryCta: "Book a Free Call",
+      "We transform local businesses into globally recognized brands through strategy, content, performance systems, and measurable optimization.",
+    primaryCta: "Book a Free Journey Audit",
     secondaryCta: "See Our Work"
   },
   footer: {
-    description: "Performance-focused digital marketing for local brands ready to scale globally."
+    description: "Research-led digital growth for local-first brands ready to scale with clarity."
   },
   loginPopup: {
     title: "Under Construction",
@@ -22,27 +22,24 @@ export const SITE_COPY = {
 export const EDITABLE_NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Packages", href: "/packages" },
-  { label: "Work Gallery", href: "/portfolio" },
+  { label: "Work", href: "/portfolio" },
   { label: "Team", href: "/team" },
-  { label: "Brand Experience", href: "/clients" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" }
 ] as const;
 
 export const EDITABLE_FOOTER_LINKS = [
   { label: "Services", href: "/services" },
-  { label: "Packages", href: "/packages" },
-  { label: "Work Gallery", href: "/portfolio" },
+  { label: "Work", href: "/portfolio" },
   { label: "Team", href: "/team" },
-  { label: "Help Center", href: "/help-center" },
+  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" }
 ] as const;
 
 export const EDITABLE_SOCIAL_LINKS = [
   { label: "Instagram", key: "instagram" },
-  { label: "Twitter", key: "twitter" },
   { label: "LinkedIn", key: "linkedin" },
+  { label: "Twitter", key: "twitter" },
   { label: "Facebook", key: "facebook" }
 ] as const;
 
