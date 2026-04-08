@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -7,12 +7,12 @@ import { CONFIG } from "@/lib/config";
 const Camera3D = dynamic(() => import("@/components/3d/Camera3D"), {
   ssr: false,
   loading: () => (
-    <div className="theme-card relative h-[360px] w-full overflow-hidden rounded-2xl sm:h-[420px]">
+    <div className="relative h-full w-full">
       <Image
         src={CONFIG.cameraFallbackImage}
         alt="Camera preview fallback"
         fill
-        className="object-cover"
+        className="camera-spin object-contain"
         sizes="(max-width: 1024px) 100vw, 50vw"
       />
     </div>
@@ -21,6 +21,8 @@ const Camera3D = dynamic(() => import("@/components/3d/Camera3D"), {
 
 type LazyCamera3DProps = {
   sceneUrl: string;
+  unstyled?: boolean;
+  className?: string;
 };
 
 function isLikelyValidSplineScene(url: string) {
@@ -29,7 +31,7 @@ function isLikelyValidSplineScene(url: string) {
   return /^https:\/\/prod\.spline\.design\/.+\/scene\.splinecode(\?.*)?$/.test(url);
 }
 
-export function LazyCamera3D({ sceneUrl }: LazyCamera3DProps) {
+export function LazyCamera3D({ sceneUrl, unstyled = false, className }: LazyCamera3DProps) {
   const canRenderSpline = CONFIG.splineEnabled && isLikelyValidSplineScene(sceneUrl);
   const fallbackNode = (
     <div className="relative h-full w-full">
@@ -37,19 +39,18 @@ export function LazyCamera3D({ sceneUrl }: LazyCamera3DProps) {
         src={CONFIG.cameraFallbackImage}
         alt="Camera preview fallback"
         fill
-        className="object-cover"
+        className="camera-spin object-contain"
         sizes="(max-width: 1024px) 100vw, 50vw"
       />
     </div>
   );
 
-  return (
-    <div className="theme-card h-[360px] w-full overflow-hidden rounded-2xl sm:h-[420px]">
-      {canRenderSpline ? (
-        <Camera3D sceneUrl={sceneUrl} fallback={fallbackNode} />
-      ) : (
-        fallbackNode
-      )}
-    </div>
-  );
+  const content = canRenderSpline ? <Camera3D sceneUrl={sceneUrl} fallback={fallbackNode} /> : fallbackNode;
+
+  if (unstyled) {
+    return <div className={className ?? "h-full w-full"}>{content}</div>;
+  }
+
+  return <div className="theme-card h-[360px] w-full overflow-hidden rounded-2xl sm:h-[420px]">{content}</div>;
 }
+

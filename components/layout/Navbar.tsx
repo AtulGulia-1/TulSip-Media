@@ -13,7 +13,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#1a0808]/80 backdrop-blur-md">
-      <div className="mx-auto flex h-[72px] w-full max-w-[1200px] items-center justify-between gap-3 px-5 lg:h-[84px] lg:px-[120px]">
+      <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center justify-between gap-3 px-5 lg:h-[84px] lg:px-8 xl:px-12">
         <Link
           href="/"
           aria-label={`${CONFIG.brandName} homepage`}
@@ -22,17 +22,17 @@ export function Navbar() {
           <Image
             src={CONFIG.logoPath}
             alt={`${CONFIG.brandName} logo`}
-            width={52}
-            height={52}
+            width={48}
+            height={48}
             className="logo-float rounded-md object-contain opacity-90"
             priority
           />
-          <span className="whitespace-nowrap font-display text-[1.6rem] leading-none text-[#f4eecf] sm:text-[1.9rem] md:text-[2.1rem]">
+          <span className="whitespace-nowrap font-display text-[1.5rem] leading-none text-[#f4eecf] sm:text-[1.75rem] lg:text-[2rem]">
             Tul<span className="text-[#be1a1a]">Sip</span> Media
           </span>
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-6 lg:flex">
+        <nav className="ml-auto hidden items-center gap-5 lg:flex xl:gap-6">
           {NAV_LINKS.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -52,7 +52,7 @@ export function Navbar() {
         <div className="hidden items-center gap-2 lg:flex">
           <Link
             href="/portfolio"
-            className="inline-flex h-11 items-center rounded-sm border border-white/20 px-4 text-xs font-semibold uppercase tracking-[0.08em] text-[#f3e7c5] transition hover:bg-white/10"
+            className="hidden h-11 items-center rounded-sm border border-white/20 px-4 text-xs font-semibold uppercase tracking-[0.08em] text-[#f3e7c5] transition hover:bg-white/10 xl:inline-flex"
           >
             See Our Work
           </Link>

@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import { SafeImage } from "@/components/common/SafeImage";
 import { HomeStickyCta } from "@/components/common/HomeStickyCta";
+import { LazyCamera3D } from "@/components/3d/LazyCamera3D";
 import { CLIENT_ITEMS } from "@/lib/data/clients";
 import { TESTIMONIAL_ITEMS } from "@/lib/data/testimonials";
 import { CONFIG } from "@/lib/config";
@@ -80,7 +81,7 @@ export default function HomePage() {
   return (
     <>
       <section className="border-y border-white/10 bg-black/20">
-        <div className="mx-auto flex h-10 w-full max-w-[1200px] items-center justify-between px-5 text-xs text-[#d8caad] lg:h-11 lg:px-[120px]">
+        <div className="mx-auto flex h-10 w-full max-w-[1200px] items-center justify-between px-5 text-xs text-[#d8caad] lg:h-11 lg:px-8 xl:px-12">
           <p className="hidden sm:block">Built for local-first brands ready to grow with strategy, content, and performance.</p>
           <p className="sm:hidden">For local brands ready to scale.</p>
           <Link
@@ -93,8 +94,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <main className="mx-auto w-full max-w-[1200px] px-5 lg:px-[120px]">
-        <section className="py-14 lg:min-h-[760px] lg:py-24" data-reveal>
+      <main className="mx-auto w-full max-w-[1200px] px-5 lg:px-8 xl:px-12">
+        <section className="py-14 lg:min-h-[780px] lg:py-24" data-reveal>
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <p className="text-xs uppercase tracking-[0.08em] text-[#bdae8a]">Research-led digital growth for local-first brands</p>
@@ -136,9 +137,19 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-5">
-              <article className="theme-card rounded-2xl p-6">
+              <div className="relative mx-auto flex w-full max-w-[520px] items-center justify-center py-2">
+                <div className="hero-ring relative h-[280px] w-[280px] rounded-full bg-[radial-gradient(circle_at_50%_45%,#7f0f0f_0%,#2b0707_60%,#180404_100%)] sm:h-[360px] sm:w-[360px] lg:h-[420px] lg:w-[420px]">
+                  <div className="absolute inset-0 grid place-items-center">
+                    <div className="h-[210px] w-[210px] overflow-hidden rounded-full sm:h-[260px] sm:w-[260px] lg:h-[320px] lg:w-[320px]">
+                      <LazyCamera3D sceneUrl={CONFIG.splineSceneUrl} unstyled className="h-full w-full" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <article className="theme-card mt-5 rounded-2xl p-5">
                 <p className="text-xs uppercase tracking-[0.08em] text-[#bdae8a]">Customer journey growth system</p>
-                <div className="mt-4 space-y-2">
+                <div className="mt-3 grid gap-2">
                   {JOURNEY_STAGES.map((stage, index) => (
                     <div key={stage} className="rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-[#e8dcc0]">
                       {index + 1}. {stage}
@@ -268,7 +279,7 @@ export default function HomePage() {
           </h2>
           {featuredTestimonial && (
             <blockquote className="theme-card mt-8 rounded-2xl p-6 lg:p-8">
-              <p className="text-sm tracking-[0.16em] text-[#f6f0cf]">{"?".repeat(featuredTestimonial.rating)}</p>
+              <p className="text-sm tracking-[0.16em] text-[#f6f0cf]">{"\u2605".repeat(featuredTestimonial.rating)}</p>
               <p className="mt-4 max-w-[760px] font-display text-[clamp(1.5rem,3vw,2.3rem)] leading-tight text-[#f6f0cf]">
                 “{featuredTestimonial.quote}”
               </p>
@@ -281,7 +292,7 @@ export default function HomePage() {
           <div className="mt-4 grid gap-4 lg:grid-cols-2">
             {supportingTestimonials.map((item) => (
               <blockquote key={item.clientName} className="theme-card rounded-2xl p-6">
-                <p className="text-sm tracking-[0.16em] text-[#f6f0cf]">{"?".repeat(item.rating)}</p>
+                <p className="text-sm tracking-[0.16em] text-[#f6f0cf]">{"\u2605".repeat(item.rating)}</p>
                 <p className="theme-muted mt-3 text-sm leading-7">“{item.quote}”</p>
                 <p className="mt-3 text-sm font-semibold text-[#f6f0cf]">{item.clientName}</p>
                 <p className="theme-muted text-xs">{item.clientRole}</p>
