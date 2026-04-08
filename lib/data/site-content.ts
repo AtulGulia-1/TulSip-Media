@@ -1,4 +1,4 @@
-﻿export const SITE_COPY = {
+export const SITE_COPY = {
   hero: {
     badge: "Research-led digital growth for local-first brands",
     line1: "Local Brands.",
@@ -33,6 +33,7 @@ export const EDITABLE_FOOTER_LINKS = [
   { label: "Work", href: "/portfolio" },
   { label: "Team", href: "/team" },
   { label: "Testimonials", href: "/testimonials" },
+  { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" }
 ] as const;
 
@@ -42,4 +43,3 @@ export const EDITABLE_SOCIAL_LINKS = [
   { label: "Twitter", key: "twitter" },
   { label: "Facebook", key: "facebook" }
 ] as const;
-

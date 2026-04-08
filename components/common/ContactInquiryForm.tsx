@@ -31,36 +31,40 @@ export function ContactInquiryForm() {
     };
 
     if (!response.ok || !data.ok) {
-      setStatus(data.error ?? "Something went wrong. Please try again.");
+      setStatus(data.error ?? "Please complete the required details so we can respond properly.");
       setLoading(false);
       return;
     }
 
     form.reset();
-    setStatus("Inquiry sent successfully. We will contact you soon.");
+    setStatus("Thanks - your request is in. We will review your details and get back to you shortly.");
     setLoading(false);
   }
 
   return (
     <form id="contact-form" onSubmit={onSubmit} className="theme-card grid gap-4 rounded-2xl p-6">
+      <h3 className="font-display text-3xl text-[#f6f0cf]">Book your free Journey Audit</h3>
+      <p className="theme-muted text-sm leading-7">
+        Tell us about your brand, goals, and current growth challenges. We will review your touchpoints and recommend the next steps.
+      </p>
       <input
         type="text"
         name="name"
         required
-        placeholder="Your name"
+        placeholder="Full name"
         className="theme-input w-full rounded-xl px-3 py-2 text-sm transition"
       />
       <input
         type="email"
         name="email"
         required
-        placeholder="Your email"
+        placeholder="Email address"
         className="theme-input w-full rounded-xl px-3 py-2 text-sm transition"
       />
       <textarea
         name="message"
         required
-        placeholder="Tell us about your project"
+        placeholder="What do you want to improve?"
         rows={5}
         className="theme-input w-full rounded-xl px-3 py-2 text-sm transition"
       />
@@ -69,7 +73,7 @@ export function ContactInquiryForm() {
         disabled={loading}
         className="theme-btn-primary w-fit rounded-sm px-5 py-2 text-sm font-semibold transition disabled:opacity-60"
       >
-        {loading ? "Sending..." : "Send Inquiry"}
+        {loading ? "Sending your request..." : "Request My Journey Audit"}
       </button>
       {status && <p className="text-xs text-[#e9ddba]">{status}</p>}
     </form>
@@ -77,4 +81,3 @@ export function ContactInquiryForm() {
 }
 
 export default ContactInquiryForm;
-

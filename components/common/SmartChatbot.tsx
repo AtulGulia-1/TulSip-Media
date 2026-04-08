@@ -18,10 +18,10 @@ const TRANSLATIONS: Record<SupportedLang, Record<Intent, string>> = {
     services:
       "We offer Social Media Management, Ad Creatives, Branding, Website Design, Performance Marketing, Content Creation, Analytics Reporting, and SEO/SEM.",
     pricing:
-      "Our packages start from Rs 4,999. I can help you choose the best plan based on your goals and budget.",
+      "Our engagement modes are scoped to your goals, channels, and current baseline. I can guide you to the right starting point.",
     contact:
-      "You can reach us from the Contact page, WhatsApp CTA, or Book a Call button. Want me to guide you to the best option?",
-    book: "Great choice. Please use the Book a Call CTA and share your business goal, target audience, and monthly budget.",
+      "You can reach us from the Contact page, WhatsApp CTA, or Book a Free Journey Audit button. Want me to guide you to the best option?",
+    book: "Great choice. Please use the Book a Free Journey Audit CTA and share your business goal, target audience, and monthly budget.",
     default:
       "Thanks for your message. I can help with services, pricing, campaign planning, and booking a strategy call."
   },
@@ -30,11 +30,11 @@ const TRANSLATIONS: Record<SupportedLang, Record<Intent, string>> = {
     services:
       "Hamari services: Social Media Management, Ad Creatives, Branding, Website Design, Performance Marketing, Content Creation, Analytics Reporting, aur SEO/SEM.",
     pricing:
-      "Hamare packages Rs 4,999 se start hote hain. Main aapke goal aur budget ke hisaab se best plan suggest kar sakta hoon.",
+      "Hamare engagement modes aapke goal, channels aur current baseline ke hisaab se scope hote hain. Main aapko best starting option suggest kar sakta hoon.",
     contact:
-      "Aap Contact page, WhatsApp CTA, ya Book a Call button se humse connect kar sakte hain. Kya main best option suggest karun?",
+      "Aap Contact page, WhatsApp CTA, ya Book a Free Journey Audit button se humse connect kar sakte hain. Kya main best option suggest karun?",
     book:
-      "Bahut badhiya. Book a Call CTA use karke apna business goal, target audience aur monthly budget share karein.",
+      "Bahut badhiya. Book a Free Journey Audit CTA use karke apna business goal, target audience aur monthly budget share karein.",
     default:
       "Message ke liye dhanyavaad. Main services, pricing, campaign planning aur strategy call booking me madad kar sakta hoon."
   },
@@ -43,11 +43,11 @@ const TRANSLATIONS: Record<SupportedLang, Record<Intent, string>> = {
     services:
       "Ofrecemos gestion de redes sociales, creativos publicitarios, branding, diseno web, marketing de rendimiento, creacion de contenido, reportes analiticos y SEO/SEM.",
     pricing:
-      "Nuestros planes comienzan desde Rs 4,999. Puedo ayudarte a elegir el mejor plan segun tu objetivo y presupuesto.",
+      "Nuestros modos de trabajo se definen segun tus objetivos, canales y punto de partida. Puedo ayudarte a elegir la mejor opcion inicial.",
     contact:
-      "Puedes contactarnos desde la pagina de contacto, el CTA de WhatsApp o el boton Book a Call.",
+      "Puedes contactarnos desde la pagina de contacto, el CTA de WhatsApp o el boton Book a Free Journey Audit.",
     book:
-      "Excelente. Usa el CTA Book a Call y comparte tu objetivo de negocio, publico objetivo y presupuesto mensual.",
+      "Excelente. Usa el CTA Book a Free Journey Audit y comparte tu objetivo de negocio, publico objetivo y presupuesto mensual.",
     default:
       "Gracias por tu mensaje. Puedo ayudarte con servicios, precios, plan de crecimiento y reserva de llamada."
   },
@@ -56,10 +56,10 @@ const TRANSLATIONS: Record<SupportedLang, Record<Intent, string>> = {
     services:
       "Nuqaddim idarat al social media, ielanat ibdaeia, branding, tasmim mawqie, taswiq bil ada', sinaeat muhtawa, taqarir tahliliyya wa SEO/SEM.",
     pricing:
-      "Tabda' al baqat min Rs 4,999. Yumkinuni musaeadatuk likhtiyar al baqa al munasiba lihadafik wa mizaniyatik.",
-    contact: "Yumkinuk altawasul maena eabr safhat al contact aw CTA WhatsApp aw Book a Call.",
+      "Nuhaddid namat altaeawun hasb ahdafak, alqanaat, wa almasar alhali. Yumkinuni musaeadatuk liikhtiyar bidaya munasiba.",
+    contact: "Yumkinuk altawasul maena eabr safhat al contact aw CTA WhatsApp aw Book a Free Journey Audit.",
     book:
-      "Mumtaz. Istakhdim Book a Call wa sharik hadaf amalak, aljumhur almustahdaf, wa almizaniya alshahriya.",
+      "Mumtaz. Istakhdim Book a Free Journey Audit wa sharik hadaf amalak, aljumhur almustahdaf, wa almizaniya alshahriya.",
     default:
       "Shukran lirisalatak. Astatie musaeadatak bilkhadamat, alasaar, khutatu alnmu, wa hajz mukalama."
   }
@@ -238,3 +238,4 @@ export function SmartChatbot() {
     </div>
   );
 }
+
