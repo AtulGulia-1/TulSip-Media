@@ -95,14 +95,14 @@ export default function HomePage() {
       </section>
 
       <main className="mx-auto w-full max-w-[1200px] px-5 lg:px-8 xl:px-12">
-        <section className="py-14 lg:min-h-[780px] lg:py-24" data-reveal>
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-7">
+                <section className="py-16 lg:min-h-[820px] lg:py-24" data-reveal>
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-6 lg:self-center lg:pr-4">
               <p className="text-xs uppercase tracking-[0.08em] text-[#bdae8a]">Research-led digital growth for local-first brands</p>
-              <h1 className="mt-4 max-w-[760px] font-display text-[clamp(2.2rem,6vw,4.4rem)] leading-[0.95] text-[#f6f0cf]">
+              <h1 className="mt-4 max-w-[760px] font-display text-[clamp(2.2rem,6vw,4.4rem)] leading-[0.96] text-[#f6f0cf]">
                 We design customer journeys that turn local attention into measurable growth.
               </h1>
-              <p className="theme-muted mt-5 max-w-[760px] text-base leading-8 lg:text-lg">
+              <p className="theme-muted mt-6 max-w-[760px] text-base leading-8 lg:text-lg">
                 TulSip Media maps the touchpoints where customers discover, evaluate, trust, and choose your brand,
                 then builds the strategy, content, ads, and web experience to improve every step.
               </p>
@@ -136,18 +136,20 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="relative mx-auto flex w-full max-w-[520px] items-center justify-center py-2">
-                <div className="hero-ring relative h-[280px] w-[280px] rounded-full bg-[radial-gradient(circle_at_50%_45%,#7f0f0f_0%,#2b0707_60%,#180404_100%)] sm:h-[360px] sm:w-[360px] lg:h-[420px] lg:w-[420px]">
+            <div className="lg:col-span-3 lg:self-center">
+              <div className="relative mx-auto flex w-full max-w-[420px] items-center justify-center py-2">
+                <div className="hero-ring relative h-[280px] w-[280px] rounded-full bg-[radial-gradient(circle_at_50%_45%,#7f0f0f_0%,#2b0707_60%,#180404_100%)] sm:h-[340px] sm:w-[340px] lg:h-[380px] lg:w-[380px]">
                   <div className="absolute inset-0 grid place-items-center">
-                    <div className="h-[210px] w-[210px] overflow-hidden rounded-full sm:h-[260px] sm:w-[260px] lg:h-[320px] lg:w-[320px]">
+                    <div className="h-[210px] w-[210px] overflow-hidden rounded-full sm:h-[250px] sm:w-[250px] lg:h-[290px] lg:w-[290px]">
                       <LazyCamera3D sceneUrl={CONFIG.splineSceneUrl} unstyled className="h-full w-full" />
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <article className="theme-card mt-5 rounded-2xl p-5">
+            <div className="lg:col-span-3 lg:self-center">
+              <article className="theme-card rounded-2xl p-5">
                 <p className="text-xs uppercase tracking-[0.08em] text-[#bdae8a]">Customer journey growth system</p>
                 <div className="mt-3 grid gap-2">
                   {JOURNEY_STAGES.map((stage, index) => (
@@ -161,7 +163,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
         <section className="py-14 lg:py-24" data-reveal>
           <p className="text-xs uppercase tracking-[0.08em] text-[#bdae8a]">Why TulSip</p>
           <h2 className="mt-3 font-display text-[clamp(1.9rem,4.4vw,3.2rem)] text-[#f6f0cf]">We do not treat marketing like disconnected tasks.</h2>
@@ -398,4 +399,5 @@ export default function HomePage() {
     </>
   );
 }
+
 
