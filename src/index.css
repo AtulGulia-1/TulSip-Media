@@ -1,18 +1,173 @@
 /* --------------------------------
-   1. Imports and Framework Setup
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://db.onlinewebfonts.com/c/440b53b1a1c65037f944ff19259d8014?family=Nokia+Cellphone+FC+Small');
 -------------------------------- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* --------------------------------
+   1. Centralized Design Tokens
+-------------------------------- */
+:root {
+  /* Official Four-Color Interface Palette */
+  --color-deep-dark: #1E1110;
+  --color-dark-brown: #462C28;
+  --color-royal-beige: #BDA07E;
+  --color-light-beige: #F1EADA;
+
+  /* RGB Channels */
+  --rgb-deep-dark: 30, 17, 16;
+  --rgb-dark-brown: 70, 44, 40;
+  --rgb-royal-beige: 189, 160, 126;
+  --rgb-light-beige: 241, 234, 218;
+
+  /* Semantic Interface Tokens */
+  --bg-primary: var(--color-deep-dark);
+  --bg-secondary: var(--color-dark-brown);
+  --text-primary: var(--color-light-beige);
+  --text-secondary: var(--color-royal-beige);
+  --text-inverse: var(--color-deep-dark);
+  --border-subtle: rgba(189, 160, 126, 0.22);
+  --border-default: rgba(189, 160, 126, 0.38);
+  --border-strong: var(--color-royal-beige);
+  --accent-primary: var(--color-royal-beige);
+  --accent-hover: var(--color-light-beige);
+
+  /* Nuanced Logo-Derived Lighting & Material Effects */
+  --lighting-ivory-glow: rgba(241, 234, 218, 0.24);
+  --lighting-bronze-glow: rgba(189, 160, 126, 0.35);
+  --lighting-shadow-depth: rgba(18, 9, 8, 0.82);
+  --gradient-bronze-sheen: linear-gradient(135deg, #462C28 0%, #BDA07E 50%, #F1EADA 100%);
+  --gradient-surface-material: linear-gradient(180deg, rgba(70, 44, 40, 0.55) 0%, rgba(30, 17, 16, 0.95) 100%);
+  --gradient-ivory-bloom: radial-gradient(circle, rgba(241, 234, 218, 0.16) 0%, rgba(189, 160, 126, 0.08) 45%, transparent 75%);
+
+  /* Motion & Transitions */
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  .social-page-wrapper {
+    --bg: 4 30% 9%;
+    --surface: 8 27% 22%;
+    --text: 42 47% 90%;
+    --muted: 32 33% 62%;
+    --stroke: 32 33% 62%;
+    --accent: 32 33% 62%;
+    --font-body: 'Inter', sans-serif;
+    --font-display: 'Instrument Serif', serif;
+    background-color: var(--color-deep-dark);
+    color: var(--color-light-beige);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .prisma-page-wrapper {
+    font-family: 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background-color: var(--color-deep-dark);
+    color: var(--color-light-beige);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .contact-page-wrapper {
+    --font-instrument: "Instrument Serif", serif;
+    --font-serif: "Instrument Serif", serif;
+    --font-sans: "Inter", sans-serif;
+    --font-nokia: "Nokia Cellphone FC Small", monospace;
+    font-family: var(--font-sans);
+    background-color: var(--color-light-beige);
+    color: var(--color-deep-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .not-found-wrapper {
+    --text-main: var(--color-deep-dark);
+    --text-secondary: var(--color-dark-brown);
+    --bg-page: var(--color-light-beige);
+    --card-bg: var(--color-royal-beige);
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+  }
+
+  .ai-page-wrapper {
+    background-color: var(--color-deep-dark);
+    color: var(--color-light-beige);
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .ai-page-wrapper .font-grotesk {
+    font-family: 'Anton', sans-serif;
+  }
+
+  .ai-page-wrapper .font-condiment {
+    font-family: 'Condiment', cursive;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes scroll-down {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes role-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float-glow {
+  0% { box-shadow: 0 0 10px rgba(189, 160, 126, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(241, 234, 218, 0.35); }
+  100% { box-shadow: 0 0 10px rgba(189, 160, 126, 0.2); }
+}
+
+/* --------------------------------
    2. Global Styles
 -------------------------------- */
+html, body, #root {
+  background: var(--color-deep-dark);
+  color: var(--color-light-beige);
+}
+
 body {
   width: 100dvw;
   overflow-x: hidden;
-  font-family: 'General Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.gradient-heading {
+  background: linear-gradient(180deg, var(--color-royal-beige) 0%, var(--color-light-beige) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 video,
 img,
 p,
@@ -23,6 +178,7 @@ a {
   user-select: none;
   -webkit-user-drag: none;
 }
+
 /* --------------------------------
    3. Scrollbar Customization
 -------------------------------- */
@@ -30,52 +186,47 @@ a {
   width: 0.5rem;
 }
 ::-webkit-scrollbar-track {
-  background: #c1c1c1;
+  background: var(--color-deep-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: #323232;
+  background: var(--color-dark-brown);
+  border-radius: 9999px;
+  border: 1px solid rgba(189, 160, 126, 0.25);
 }
-/* --------------------------------
-   4. Font Declarations
--------------------------------- */
-@font-face {
-  font-family: 'circular-web';
-  src: url('/fonts/circularweb-book.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'general';
-  src: url('/fonts/general.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'robert-medium';
-  src: url('/fonts/robert-medium.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'robert-regular';
-  src: url('/fonts/robert-regular.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'zentry';
-  src: url('/fonts/zentry-regular.woff2') format('woff2');
-  font-display: swap;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-royal-beige);
 }
 
 /* --------------------------------
-   5. Utility Classes
+   4. Utility Classes
 -------------------------------- */
 @layer utilities {
+  .accent-gradient {
+    background-image: linear-gradient(90deg, var(--color-royal-beige) 0%, var(--color-light-beige) 100%);
+  }
+  .token-bronze-material {
+    background-image: var(--gradient-surface-material);
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 12px 36px -8px var(--lighting-shadow-depth), inset 0 1px 0 var(--lighting-ivory-glow);
+  }
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)'/%3E%3C/svg%3E");
+  }
+  .glow-cta {
+    transition: box-shadow var(--transition-base), background-color var(--transition-base), color var(--transition-base), transform var(--transition-base);
+  }
+  .glow-cta:hover {
+    box-shadow: 0 0 24px 4px var(--lighting-bronze-glow), inset 0 1px 1px var(--lighting-ivory-glow);
+    background-color: var(--color-light-beige);
+    color: var(--color-deep-dark);
+  }
   /* ---- Global Utility Classes ---- */
   .full-height {
     height: 100vh;
-    height: 100dvh; /* adjusting form mobile view if svh is available */
+    height: 100dvh;
   }
   .center {
     @apply flex items-center justify-center;
@@ -84,7 +235,7 @@ a {
     @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
   }
   .special-font span {
-    font-family: 'Zentry';
+    font-family: 'Clash Display', sans-serif;
     font-feature-settings: 'ss01' on;
   }
   /* ---- Hero Section ---- */
@@ -98,7 +249,9 @@ a {
     @apply center-position size-full object-cover;
   }
   .secondary-video {
-    @apply tr z-10 size-0 cursor-pointer rounded-xl object-cover [perspective:1000px] group-hover:size-52 group-hover:outline group-hover:[transform:rotateX(calc(var(--rotate-x)_*_2))_rotateY(calc(var(--rotate-y)_*_2))];
+    @apply tr absolute inset-0 m-auto z-10 size-0 cursor-pointer rounded-xl object-cover [perspective:1000px] group-hover:size-52 group-hover:outline focus-visible:size-52 focus-visible:outline [@media(hover:none)]:size-24 [@media(hover:none)]:outline max-md:size-20 max-md:outline group-hover:[transform:perspective(1000px)_rotateX(calc(var(--rotate-x,0deg)_*_2))_rotateY(calc(var(--rotate-y,0deg)_*_2))];
+    transform-origin: center center;
+    outline-color: rgba(189, 160, 126, 0.5);
   }
   .hero-heading {
     @apply font-zentry text-5xl font-black sm:text-6xl md:text-8xl lg:text-[11rem];
@@ -114,22 +267,27 @@ a {
     transform: translateZ(10px) rotateX(10deg) rotateY(20deg);
   }
 
-  /* ---- About Section ---- */
   /* ---- Navbar ---- */
   .white-arrow {
-    @apply fill-white text-white;
+    fill: var(--color-light-beige);
+    color: var(--color-light-beige);
   }
   .black-arrow {
-    @apply fill-black text-black;
+    fill: var(--color-deep-dark);
+    color: var(--color-deep-dark);
   }
   .navbar-link {
-    @apply center z-[100] block h-full w-1/5 gap-2 font-semibold transition-colors delay-75 duration-75 ease-linear hover:text-black;
+    @apply center z-[100] block h-full w-1/5 gap-2 font-semibold transition-colors delay-75 duration-75 ease-linear;
+  }
+  .navbar-link:hover {
+    color: var(--color-deep-dark);
   }
   .navbar-link > svg {
     @apply transition-colors delay-75 duration-75 ease-linear;
   }
   #navbar-hover-effect {
-    @apply absolute top-1/2 hidden h-full w-1/5 -translate-y-1/2 rounded-full bg-blue-75 transition-[left] duration-150 ease-linear;
+    @apply absolute top-1/2 hidden h-full w-1/5 -translate-y-1/2 rounded-full transition-[left] duration-150 ease-linear;
+    background-color: var(--color-royal-beige);
   }
   .navbar-link:hover ~ #navbar-hover-effect {
     @apply block;
@@ -152,18 +310,28 @@ a {
   .navbar-link:nth-child(5):hover ~ #navbar-hover-effect {
     @apply left-[80%];
   }
+
   /* ---- Features Section ---- */
   .card-violet > div {
-    @apply bg-violet-300;
+    background-color: var(--color-dark-brown);
+    background-image: radial-gradient(circle at top left, rgba(189, 160, 126, 0.22), rgba(70, 44, 40, 0.95));
   }
   .bento-title {
     @apply font-zentry text-4xl font-black uppercase md:text-6xl;
   }
   .card-button {
-    @apply center cursor-pointer gap-2 rounded-full border-2 border-current bg-black px-6 py-2 text-xs max-md:px-4 max-md:py-1 max-md:text-[0.5rem] max-sm:text-[0.4rem];
+    @apply center cursor-pointer gap-2 rounded-full border-2 px-6 py-2 text-xs transition-colors duration-300 max-md:px-4 max-md:py-1 max-md:text-[0.5rem] max-sm:text-[0.4rem];
+    background-color: var(--color-deep-dark);
+    color: var(--color-light-beige);
+    border-color: rgba(189, 160, 126, 0.5);
+  }
+  .card-button:hover {
+    background-color: var(--color-royal-beige);
+    color: var(--color-deep-dark);
+    border-color: var(--color-light-beige);
   }
 
-  /* ---- contact Section ---- */
+  /* ---- Contact Section ---- */
   .hovering-effect {
     @apply transition-transform ease-linear [perspective:1000px] group-hover:[transform:rotateX(var(--rotate-x))_rotateY(var(--rotate-y))];
   }
@@ -182,15 +350,46 @@ a {
       'M 241.892 86.4691 L 241.892 86.4691 Q 249.795 87.708 247.763 95.4456 L 206.664 251.938 Q 204.632 259.676 196.641 259.293 L 59.5421 252.717 Q 51.5513 252.334 53.1599 244.497 L 88.8622 70.5697 Q 90.4708 62.7331 98.3743 63.972 Z'
     );
   }
+
+  .liquid-glass {
+    background: rgba(70, 44, 40, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: none;
+    box-shadow: inset 0 1px 1px var(--lighting-ivory-glow), 0 8px 24px var(--lighting-shadow-depth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(241, 234, 218, 0.45) 0%,
+      rgba(189, 160, 126, 0.2) 20%,
+      rgba(189, 160, 126, 0) 40%,
+      rgba(189, 160, 126, 0) 60%,
+      rgba(189, 160, 126, 0.2) 80%,
+      rgba(241, 234, 218, 0.45) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#F1EADA 0 0) content-box,
+      linear-gradient(#F1EADA 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 }
 
 /* ---- Loading Animation ---- */
-/* From Uiverse.io by G4b413l */
-/* https://uiverse.io/G4b413l/tidy-walrus-92 */
 .three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
-  --uib-color: #5d3fd3;
+  --uib-color: var(--color-royal-beige);
   position: relative;
   display: inline-block;
   height: var(--uib-size);
@@ -212,6 +411,7 @@ a {
   padding-bottom: 100%;
   background-color: var(--uib-color);
   border-radius: 50%;
+  box-shadow: 0 0 10px var(--lighting-bronze-glow);
 }
 
 .three-body__dot:nth-child(1) {
@@ -258,7 +458,6 @@ a {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -270,7 +469,6 @@ a {
     transform: translateY(0%) scale(1);
     opacity: 1;
   }
-
   50% {
     transform: translateY(-66%) scale(0.65);
     opacity: 0.8;
@@ -283,16 +481,14 @@ a {
     transform: translateY(0%) scale(1);
     opacity: 1;
   }
-
   50% {
     transform: translateY(66%) scale(0.65);
     opacity: 0.8;
   }
 }
 
-/* From Uiverse.io by mobinkakei */
 .btn span {
-  transition: top 0.5s;
+  transition: top 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .btn-text-one {
@@ -317,4 +513,25 @@ a {
 
 .btn:hover .btn-text-two {
   top: 50%;
+}
+
+/* Accessibility: Focus-visible & Reduced Motion Support */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-royal-beige);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

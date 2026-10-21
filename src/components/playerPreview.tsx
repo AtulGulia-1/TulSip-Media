@@ -10,14 +10,6 @@ interface PlayerPreviewProps {
   currentVideoIndex: number;
 }
 
-/**
- * PlayerPreview Component
- * Renders an interactive preview card with 3D rotation effects
- * Features:
- * - Mouse-following animation
- * - Perspective rotation
- * - Auto-scaling on hover
- */
 const PlayerPreview = ({
   previewRef,
   containerRef,
@@ -26,10 +18,6 @@ const PlayerPreview = ({
 }: PlayerPreviewProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  /**
-   * Handles 3D rotation effect based on mouse position
-   * Applies perspective transformation to both wrapper and preview
-   */
   const handleMouseMove = debounce((e: MouseEvent) => {
     if (!wrapperRef.current || !containerRef.current) return;
 
@@ -37,16 +25,13 @@ const PlayerPreview = ({
       defaults: { duration: 0.4, ease: 'power2.out' },
     });
 
-    // Calculate normalized mouse coordinates
     const bounds = containerRef.current.getBoundingClientRect();
     const normalizedX = (e.clientX - bounds.left) / bounds.width;
     const normalizedY = (e.clientY - bounds.top) / bounds.height;
 
-    // Calculate rotation angles
-    const rotationX = (normalizedY - 0.5) * -70; // Max 35° rotation
-    const rotationY = (normalizedX - 0.5) * 70; // Max 35° rotation
+    const rotationX = (normalizedY - 0.5) * -70;
+    const rotationY = (normalizedX - 0.5) * 70;
 
-    // Apply 3D transformations
     timeline
       .to(wrapperRef.current, {
         rotationX,
@@ -56,7 +41,7 @@ const PlayerPreview = ({
       .to(
         previewRef.current,
         {
-          rotationX: -rotationX * 0.7, // Counter-rotation
+          rotationX: -rotationX * 0.7,
           rotationY: -rotationY * 0.7,
         },
         '<',
@@ -105,11 +90,11 @@ const PlayerPreview = ({
     >
       <div
         ref={previewRef}
-        className="pulse-size center overflow-hidden rounded-lg border-2 border-black"
+        className="pulse-size center overflow-hidden rounded-lg border-2 border-royal-beige shadow-token-card"
       >
         <img
-          src={`img/hero-${(currentVideoIndex % 4) + 1}.webp`}
-          alt="Preview card img"
+          src={`/img/hero-${(currentVideoIndex % 4) + 1}.webp`}
+          alt="Preview card showing TulSip Media projects"
           className="size-52 object-cover"
           draggable="false"
           loading="lazy"

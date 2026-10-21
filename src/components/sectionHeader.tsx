@@ -15,7 +15,7 @@ const SectionHeader = ({
   color?: string;
 }) => {
   const headerRef = useRef<HTMLDivElement>(null);
-  const h2Ref = useRef<HTMLDivElement>(null);
+  const h2Ref = useRef<HTMLHeadingElement>(null);
   useGSAP(() => {
     gsap.fromTo(
       h2Ref.current,
@@ -41,7 +41,6 @@ const SectionHeader = ({
           trigger: headerRef.current,
           start: 'top bottom',
           end: 'top 10%',
-          // toggleActions: 'restart none none none',
           scrub: 1,
         },
       },
@@ -53,17 +52,19 @@ const SectionHeader = ({
       className={clsx(
         'center flex-col gap-y-5 text-wrap px-5 py-24 uppercase max-md:py-16',
         {
-          'text-black': color === 'black',
-          'text-blue-75': color === 'blue',
+          'text-deep-dark': color === 'black' || color === 'dark',
+          'text-light-beige':
+            color === 'blue' || color === 'white' || color === 'light',
+          'text-royal-beige': color === 'beige',
         },
       )}
     >
-      <h1 className="font-general text-xs font-semibold max-lg:text-[0.6rem] max-md:text-[0.5rem]">
+      <p className="font-general text-xs font-semibold tracking-widest text-royal-beige max-lg:text-[0.6rem] max-md:text-[0.5rem]">
         {H1}
-      </h1>
+      </p>
       <h2
         ref={h2Ref}
-        className="special-font rotate- text-center font-zentry text-[7rem] leading-[0.9] max-lg:text-6xl max-md:text-5xl"
+        className="special-font rotate- text-center font-zentry text-[7rem] leading-[0.9] max-lg:text-6xl max-md:text-4xl"
       >
         {H2}
       </h2>
