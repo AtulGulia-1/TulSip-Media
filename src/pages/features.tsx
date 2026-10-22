@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, HelpCircle, Compass, ShieldCheck, FileText } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, HelpCircle, Compass, ShieldCheck } from 'lucide-react';
 import Card from '../components/card';
 import { trackAnalyticsEvent } from '../components/AnalyticsManager';
 

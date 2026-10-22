@@ -1,34 +1,35 @@
-import { debounce } from 'lodash';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 
 const CardHoverEffect = () => {
-  const MoveByMouse = debounce(
-    (e: React.MouseEvent<HTMLElement>) => {
-      const element = e.currentTarget;
-      if (!element) return;
+  const rafIdRef = useRef<number | null>(null);
 
-      const { left, top, width, height } = element.getBoundingClientRect();
-      const x = e.clientX - left;
-      const y = e.clientY - top;
-      const xPercent = x / width;
-      const yPercent = y / height;
+  return useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const element = e.currentTarget;
+    if (!element) return;
+
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+
+    if (rafIdRef.current !== null) {
+      cancelAnimationFrame(rafIdRef.current);
+    }
+
+    rafIdRef.current = requestAnimationFrame(() => {
+      const rect = element.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      const xPercent = x / rect.width;
+      const yPercent = y / rect.height;
       const rotateX = (xPercent - 0.5) * 25; // left right
       const rotateY = (yPercent - 0.5) * -25; // up down
 
-      // Update CSS variables
-      element.style.setProperty('--rotate-y', `${rotateX}deg`);
-      element.style.setProperty('--rotate-x', `${rotateY}deg`);
-    },
-    16,
-    {
-      maxWait: 16,
-    },
-  ); // 60fps
-
-  return useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => MoveByMouse({ ...e }),
-    [MoveByMouse],
-  );
+      element.style.setProperty('--rotate-y', `${rotateX.toFixed(2)}deg`);
+      element.style.setProperty('--rotate-x', `${rotateY.toFixed(2)}deg`);
+      rafIdRef.current = null;
+    });
+  }, []);
 };
 
 export default CardHoverEffect;

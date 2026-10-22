@@ -141,13 +141,13 @@ const ChatbotWidget = () => {
                 y: { repeat: Infinity, duration: 4, ease: 'easeInOut' },
                 opacity: { duration: 0.3 },
               }}
-              className="fixed bottom-20 -right-6 md:-right-8 w-48 h-48 md:w-64 md:h-64 cursor-pointer z-[90] pointer-events-auto drop-shadow-[0_0_18px_rgba(189,160,126,0.35)]"
+              className="fixed bottom-20 -right-6 md:-right-8 w-48 h-48 md:w-64 md:h-64 cursor-pointer z-[90] pointer-events-auto will-change-transform"
               onClick={() => {
                 setIsOpen(true);
                 setRobotState('HIDDEN');
               }}
             >
-              <img src="/img/peeking.png" className="w-full h-full object-contain object-right" alt="" />
+              <img src="/img/peeking.webp" className="w-full h-full object-contain object-right drop-shadow-[0_4px_16px_rgba(189,160,126,0.3)]" alt="" />
             </motion.div>
           )}
 
@@ -163,14 +163,14 @@ const ChatbotWidget = () => {
                 opacity: { duration: 0.3 },
               }}
               style={{ originY: 0 }}
-              className="fixed top-0 right-[5%] w-48 h-64 md:w-64 md:h-80 cursor-pointer z-[90] pointer-events-auto"
+              className="fixed top-0 right-[5%] w-48 h-64 md:w-64 md:h-80 cursor-pointer z-[90] pointer-events-auto will-change-transform"
               onClick={() => {
                 setIsOpen(true);
                 setRobotState('HIDDEN');
               }}
             >
               <div className="absolute top-0 left-1/2 w-[2px] h-16 bg-gradient-to-b from-royal-beige/50 to-transparent -translate-x-1/2" />
-              <img src="/img/hanging.png" className="w-full h-full object-contain pt-12 drop-shadow-[0_0_18px_rgba(189,160,126,0.28)]" alt="" />
+              <img src="/img/hanging.webp" className="w-full h-full object-contain pt-12 drop-shadow-[0_4px_16px_rgba(189,160,126,0.25)]" alt="" />
             </motion.div>
           )}
 
@@ -186,13 +186,13 @@ const ChatbotWidget = () => {
                 opacity: { duration: 0.3 },
               }}
               style={{ originY: 1 }}
-              className="fixed bottom-0 right-10 w-48 h-56 md:w-64 md:h-72 cursor-pointer z-[90] pointer-events-auto"
+              className="fixed bottom-0 right-10 w-48 h-56 md:w-64 md:h-72 cursor-pointer z-[90] pointer-events-auto will-change-transform"
               onClick={() => {
                 setIsOpen(true);
                 setRobotState('HIDDEN');
               }}
             >
-              <img src="/img/standing.png" className="w-full h-full object-contain drop-shadow-[0_0_18px_rgba(189,160,126,0.35)]" alt="" />
+              <img src="/img/standing.webp" className="w-full h-full object-contain drop-shadow-[0_4px_16px_rgba(189,160,126,0.3)]" alt="" />
             </motion.div>
           )}
 
@@ -207,13 +207,13 @@ const ChatbotWidget = () => {
                 rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut' },
                 opacity: { duration: 0.3 },
               }}
-              className="fixed bottom-0 right-10 w-48 h-56 md:w-64 md:h-72 cursor-pointer z-[90] pointer-events-auto"
+              className="fixed bottom-0 right-10 w-48 h-56 md:w-64 md:h-72 cursor-pointer z-[90] pointer-events-auto will-change-transform"
               onClick={() => {
                 setIsOpen(true);
                 setRobotState('HIDDEN');
               }}
             >
-              <img src="/img/hii.png" className="w-full h-full object-contain drop-shadow-[0_0_18px_rgba(189,160,126,0.4)]" alt="" />
+              <img src="/img/hii.webp" className="w-full h-full object-contain drop-shadow-[0_4px_16px_rgba(189,160,126,0.35)]" alt="" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -238,7 +238,7 @@ const ChatbotWidget = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-deep-dark/60 flex items-center justify-center overflow-hidden border border-royal-beige/30">
                     <img
-                      src="/img/peeking.png"
+                      src="/img/peeking.webp"
                       alt=""
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -347,7 +347,7 @@ const ChatbotWidget = () => {
             >
               <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center">
                 <img
-                  src="/img/peeking.png"
+                  src="/img/peeking.webp"
                   alt=""
                   className="w-full h-full object-cover"
                   onError={(e) => {

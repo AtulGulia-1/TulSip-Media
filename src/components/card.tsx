@@ -65,7 +65,7 @@ const Card = ({ title, description, video, altText, box }: CardProps) => {
       <div className="relative size-full overflow-hidden rounded-lg border-[1px] border-royal-beige/30 bg-dark-brown/40 shadow-token-card transition-transform ease-linear will-change-transform [perspective:1000px] group-hover:border-royal-beige/60 group-hover:[transform:rotateX(var(--rotate-x))_rotateY(var(--rotate-y))_scale(0.95)]">
         {video && (
           <video
-            preload="metadata"
+            preload="none"
             poster={derivedPoster}
             muted
             loop

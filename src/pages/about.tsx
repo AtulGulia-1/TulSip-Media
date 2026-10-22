@@ -66,7 +66,7 @@ const About = () => {
         </div>
         <img
           ref={aboutImgRef}
-          src="/img/Petals.png"
+          src="/img/Petals.webp"
           className="center-position z-20 size-full object-cover pointer-events-none"
           alt=""
           draggable="false"
@@ -77,7 +77,7 @@ const About = () => {
           src="/videos/left to right.mp4"
           poster="/img/posters/left to right.webp"
           preload="metadata"
-          autoPlay
+          data-auto-resume="true"
           loop
           muted
           playsInline

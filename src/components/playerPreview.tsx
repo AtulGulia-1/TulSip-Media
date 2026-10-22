@@ -1,6 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import debounce from 'lodash/debounce';
+import { debounce } from '../utils/debounce';
 import { useCallback, useRef } from 'react';
 
 interface PlayerPreviewProps {

@@ -110,22 +110,31 @@ const Hero = () => {
     }
   }, [currentStageIndex, isPaused]);
 
-  // Preload upcoming stage video into the hidden transition layer while idle
+  // Preload upcoming stage video into the hidden transition layer while idle (deferred on initial load)
   useEffect(() => {
     if (interactionState !== 'idle') return;
     const transitionVideo = transitionVideoRef.current;
     if (!transitionVideo) return;
 
-    const upcoming = HERO_STORY_STAGES[nextStageIndex];
-    if (transitionVideo.getAttribute('data-loaded-src') !== upcoming.src) {
-      transitionVideo.setAttribute('data-loaded-src', upcoming.src);
-      transitionVideo.poster = upcoming.poster;
-      transitionVideo.src = upcoming.src;
-      transitionVideo.load();
+    const loadUpcoming = () => {
+      const upcoming = HERO_STORY_STAGES[nextStageIndex];
+      if (transitionVideo.getAttribute('data-loaded-src') !== upcoming.src) {
+        transitionVideo.setAttribute('data-loaded-src', upcoming.src);
+        transitionVideo.poster = upcoming.poster;
+        transitionVideo.src = upcoming.src;
+        transitionVideo.load();
+      }
+      transitionVideo.pause();
+      gsap.set(transitionVideo, { clearProps: 'all' });
+    };
+
+    if (currentStageIndex === 0 && !transitionVideo.getAttribute('data-loaded-src')) {
+      const timer = setTimeout(loadUpcoming, 2500);
+      return () => clearTimeout(timer);
+    } else {
+      loadUpcoming();
     }
-    transitionVideo.pause();
-    gsap.set(transitionVideo, { clearProps: 'all' });
-  }, [interactionState, nextStageIndex]);
+  }, [currentStageIndex, interactionState, nextStageIndex]);
 
   // Clean up any active GSAP timeline on unmount
   useEffect(() => {

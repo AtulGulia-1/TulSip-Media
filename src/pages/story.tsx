@@ -26,7 +26,7 @@ const Story = () => {
             preload="metadata"
             className="size-full object-cover transition-transform ease-linear will-change-transform [perspective:1000px] group-hover:[transform:rotateX(var(--rotate-x))_rotateY(var(--rotate-y))]"
             aria-label="TulSip Media website design and brand strategy case study reel"
-            autoPlay
+            data-auto-resume="true"
             muted
             loop
             playsInline
