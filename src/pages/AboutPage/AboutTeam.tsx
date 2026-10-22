@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Sparkles, Mail, CheckCircle2, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowLeft, ArrowRight, Sparkles, Mail } from 'lucide-react';
 import { TEAM_MEMBERS } from '../../data/teamData';
 
 const AboutTeam = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const totalMembers = TEAM_MEMBERS.length;
   const activeMember = TEAM_MEMBERS[activeIndex] || TEAM_MEMBERS[0];

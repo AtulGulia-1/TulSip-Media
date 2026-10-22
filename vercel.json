@@ -22,11 +22,25 @@
       "source": "/case-studies/viktor-oddy",
       "destination": "/case-studies/local-business-digital-gap",
       "permanent": true
+    },
+    {
+      "source": "/web-development",
+      "destination": "/website-development",
+      "permanent": true
+    },
+    {
+      "source": "/web-design",
+      "destination": "/website-development",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/website-development",
       "destination": "/index.html"
     },
     {

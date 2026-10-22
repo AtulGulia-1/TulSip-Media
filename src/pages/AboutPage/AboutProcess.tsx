@@ -32,9 +32,9 @@ const AboutProcess = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const cards = gsap.utils.toArray('.process-card');
+    const cards = gsap.utils.toArray<HTMLElement>('.process-card');
     
-    cards.forEach((card: any) => {
+    cards.forEach((card) => {
       gsap.fromTo(card,
         { opacity: 0, y: 50 },
         {

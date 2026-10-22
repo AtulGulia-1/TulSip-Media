@@ -15,8 +15,10 @@ interface CardProps {
   video?: string;
   altText?: string;
   box: number;
+  ctaHref?: string;
+  ctaText?: string;
 }
-const Card = ({ title, description, video, altText, box }: CardProps) => {
+const Card = ({ title, description, video, altText, box, ctaHref, ctaText }: CardProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const derivedPoster = video ? video.replace('/videos/', '/img/posters/').replace(/\.mp4$/i, '.webp') : undefined;
   const cardRef = useRef<HTMLDivElement | null>(null);
@@ -87,7 +89,7 @@ const Card = ({ title, description, video, altText, box }: CardProps) => {
         <div className="center absolute bottom-4 left-4 items-start gap-2 max-md:flex-col">
           {box !== 6 && box !== 5 && box !== 4 && (
             <a
-              href="/contact"
+              href={ctaHref || '/contact'}
               className="card-button flex items-center justify-center text-light-beige"
             >
               <Send
@@ -95,15 +97,15 @@ const Card = ({ title, description, video, altText, box }: CardProps) => {
                 className="max-md:size-3"
                 fill={DESIGN_TOKENS.palette.lightBeige}
               />{' '}
-              DISCUSS PROJECT
+              {ctaText || 'DISCUSS PROJECT'}
             </a>
           )}
           {box === 4 && (
             <a
-              href="/case-studies"
+              href={ctaHref || '/case-studies'}
               className="card-button flex items-center justify-center text-royal-beige"
             >
-              EXPLORE WORK
+              {ctaText || 'EXPLORE WORK'}
               <Send
                 size={12}
                 className="max-md:size-3"

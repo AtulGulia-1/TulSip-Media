@@ -268,7 +268,7 @@ const ContactHero = () => {
             <Shield size={20} className="text-royal-beige shrink-0" aria-hidden="true" />
           </div>
 
-          <form onSubmit={handleSubmit} noValidate className="space-y-5">
+          <form onSubmit={handleSubmit} onFocus={handleFormFocus} noValidate className="space-y-5">
             {/* Honeypot Field */}
             <div className="hidden" aria-hidden="true">
               <label htmlFor="company_url_trap">Leave this field blank</label>

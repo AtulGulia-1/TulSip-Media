@@ -9,7 +9,7 @@ const TypingMessages = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let timeout: any;
+    let timeout: ReturnType<typeof setTimeout> | undefined;
 
     const handleTyping = () => {
       const currentMessage = messages[currentMessageIndex];

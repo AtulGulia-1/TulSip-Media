@@ -22,7 +22,6 @@ const AnimatedLetter = ({ text, className = '' }: AnimatedLetterProps) => {
       {chars.map((char, index) => {
         // Calculate the range for this specific character
         const start = index / totalChars;
-        const end = start + (1 / totalChars);
         
         // We use a slightly expanded range to make the transition smoother
         // eslint-disable-next-line react-hooks/rules-of-hooks

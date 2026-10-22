@@ -29,6 +29,7 @@ export function sanitizeText(
   if (typeof input !== 'string') return '';
   let cleaned = input
     // Remove null bytes and dangerous control characters
+    // eslint-disable-next-line no-control-regex
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
     // Strip HTML/script angle brackets
     .replace(/[<>]/g, '');

@@ -45,6 +45,8 @@ const Features = () => {
       video: '/videos/Web Dev.mp4',
       altText: 'Custom business website development by TulSip Media',
       box: 1,
+      ctaHref: '/website-development',
+      ctaText: 'EXPLORE WEBSITES',
     },
     {
       title: (
@@ -60,6 +62,8 @@ const Features = () => {
       video: '/videos/Social.mp4',
       altText: 'E-commerce storefront design and development',
       box: 2,
+      ctaHref: '/website-development#capabilities',
+      ctaText: 'E-COMMERCE',
     },
     {
       title: (
@@ -75,6 +79,8 @@ const Features = () => {
       video: '/videos/SEO.mp4',
       altText: 'Technical SEO and website architecture optimization',
       box: 3,
+      ctaHref: '/contact',
+      ctaText: 'SEO & ARCHITECTURE',
     },
     {
       title: (
@@ -90,6 +96,8 @@ const Features = () => {
       video: '/videos/PPC.mp4',
       altText: 'Web application development and UI UX design systems',
       box: 4,
+      ctaHref: '/website-development#capabilities',
+      ctaText: 'WEB APPLICATIONS',
     },
     {
       video: '/videos/ROI.mp4',
@@ -121,13 +129,13 @@ const Features = () => {
 
       <header>
         <p className="font-mono text-xs uppercase tracking-[0.22em] text-royal-beige mb-2">
-          Solutions &amp; Digital Services · Built Around Real Business Needs
+          Services &amp; Capabilities · Website Design, Web Development &amp; Digital Growth
         </p>
         <h2 className="max-mg:text-base text-2xl font-bold sm:text-3xl max-lg:text-xl">
-          Websites That Match the Real Caliber of Your Business
+          High-Performance Websites and Digital Marketing for Modern Brands
         </h2>
         <p className="max-mg:text-sm mt-2 max-w-[42rem] text-lg opacity-85 max-lg:text-base leading-relaxed">
-          You have built a dependable business with real expertise. We translate that reputation into a modern, credible digital presence—making it simple for potential clients to discover what you do, trust your experience, and reach out with confidence.
+          From custom business websites and e-commerce stores to search engine optimization and digital marketing campaigns, TulSip Media builds the modern digital infrastructure that turns online attention into measurable business revenue.
         </p>
       </header>
 
@@ -140,8 +148,123 @@ const Features = () => {
             video={card.video}
             altText={card.altText}
             box={card.box}
+            ctaHref={card.ctaHref}
+            ctaText={card.ctaText}
           />
         ))}
+      </div>
+
+      {/* Dedicated Website Design & Development Spotlight Block */}
+      <div className="mt-8 rounded-3xl border border-royal-beige/30 bg-gradient-to-br from-dark-brown/60 via-deep-dark to-dark-brown/40 p-6 sm:p-10 lg:p-12 shadow-token-card">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-royal-beige/20 pb-8">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-royal-beige/40 bg-royal-beige/10 px-3.5 py-1 font-mono text-[11px] uppercase tracking-wider text-royal-beige mb-3">
+              Core Discipline · Website Engineering
+            </span>
+            <h3 className="font-zentry text-3xl sm:text-4xl uppercase tracking-tight text-light-beige">
+              Custom Website Design &amp; Development
+            </h3>
+            <p className="mt-3 font-general text-sm sm:text-base text-light-beige/85 leading-relaxed">
+              Every website we build is hand-engineered for speed, mobile responsiveness, and high conversion. We don't use clunky page-builder templates that slow down your business—we build clean, scalable web foundations that make your company stand out and convert visitors into buyers.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+            <a
+              href="/website-development"
+              onClick={() => trackAnalyticsEvent('web_dev_cta_click', { cta_location: 'features_spotlight' })}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-cta glow-cta px-6 py-3 font-general text-xs font-bold uppercase tracking-wider text-deep-dark transition-transform hover:scale-105"
+            >
+              Explore Website Services <ArrowUpRight size={14} />
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-royal-beige/40 bg-deep-dark/60 px-6 py-3 font-general text-xs font-semibold uppercase tracking-wider text-light-beige hover:border-royal-beige hover:bg-dark-brown/80 transition-colors"
+            >
+              Request a Website Proposal
+            </a>
+          </div>
+        </div>
+
+        {/* 6 Core Web Capabilities Grid */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a
+            href="/website-development#capabilities"
+            className="group rounded-2xl border border-royal-beige/20 bg-deep-dark/60 p-5 transition-all hover:border-royal-beige/60 hover:bg-dark-brown/50"
+          >
+            <span className="font-mono text-[11px] text-royal-beige font-semibold">01 · Business Websites</span>
+            <h4 className="mt-1 font-general text-base font-bold text-light-beige group-hover:text-royal-beige transition-colors">
+              Corporate &amp; Professional Sites
+            </h4>
+            <p className="mt-2 text-xs text-light-beige/75 leading-relaxed">
+              Polished, authoritative websites that articulate your exact value proposition, build client trust, and drive high-intent enquiries.
+            </p>
+          </a>
+
+          <a
+            href="/website-development#capabilities"
+            className="group rounded-2xl border border-royal-beige/20 bg-deep-dark/60 p-5 transition-all hover:border-royal-beige/60 hover:bg-dark-brown/50"
+          >
+            <span className="font-mono text-[11px] text-royal-beige font-semibold">02 · E-Commerce</span>
+            <h4 className="mt-1 font-general text-base font-bold text-light-beige group-hover:text-royal-beige transition-colors">
+              Online Stores &amp; Catalogues
+            </h4>
+            <p className="mt-2 text-xs text-light-beige/75 leading-relaxed">
+              Frictionless product browsing, robust inventory structuring, and conversion-optimized checkout journeys on Shopify or custom stacks.
+            </p>
+          </a>
+
+          <a
+            href="/website-development#capabilities"
+            className="group rounded-2xl border border-royal-beige/20 bg-deep-dark/60 p-5 transition-all hover:border-royal-beige/60 hover:bg-dark-brown/50"
+          >
+            <span className="font-mono text-[11px] text-royal-beige font-semibold">03 · Landing Pages</span>
+            <h4 className="mt-1 font-general text-base font-bold text-light-beige group-hover:text-royal-beige transition-colors">
+              High-Converting Funnels
+            </h4>
+            <p className="mt-2 text-xs text-light-beige/75 leading-relaxed">
+              Targeted, distraction-free campaign landing pages engineered to maximize return on ad spend (ROAS) and lead capture rates.
+            </p>
+          </a>
+
+          <a
+            href="/website-development#capabilities"
+            className="group rounded-2xl border border-royal-beige/20 bg-deep-dark/60 p-5 transition-all hover:border-royal-beige/60 hover:bg-dark-brown/50"
+          >
+            <span className="font-mono text-[11px] text-royal-beige font-semibold">04 · Web Applications</span>
+            <h4 className="mt-1 font-general text-base font-bold text-light-beige group-hover:text-royal-beige transition-colors">
+              Client Portals &amp; Tools
+            </h4>
+            <p className="mt-2 text-xs text-light-beige/75 leading-relaxed">
+              Custom interactive web apps, internal dashboards, and client portals built with React, TypeScript, and modern APIs.
+            </p>
+          </a>
+
+          <a
+            href="/website-development#capabilities"
+            className="group rounded-2xl border border-royal-beige/20 bg-deep-dark/60 p-5 transition-all hover:border-royal-beige/60 hover:bg-dark-brown/50"
+          >
+            <span className="font-mono text-[11px] text-royal-beige font-semibold">05 · Speed Optimization</span>
+            <h4 className="mt-1 font-general text-base font-bold text-light-beige group-hover:text-royal-beige transition-colors">
+              Core Web Vitals &amp; Performance
+            </h4>
+            <p className="mt-2 text-xs text-light-beige/75 leading-relaxed">
+              Auditing, refactoring, and optimizing slow websites to achieve sub-second load times, superior mobile responsiveness, and higher Google rankings.
+            </p>
+          </a>
+
+          <a
+            href="/website-development#capabilities"
+            className="group rounded-2xl border border-royal-beige/20 bg-deep-dark/60 p-5 transition-all hover:border-royal-beige/60 hover:bg-dark-brown/50"
+          >
+            <span className="font-mono text-[11px] text-royal-beige font-semibold">06 · Maintenance &amp; Care</span>
+            <h4 className="mt-1 font-general text-base font-bold text-light-beige group-hover:text-royal-beige transition-colors">
+              Security, Backups &amp; Updates
+            </h4>
+            <p className="mt-2 text-xs text-light-beige/75 leading-relaxed">
+              Proactive website maintenance, zero-downtime hosting setups, continuous security patches, and regular content adjustments.
+            </p>
+          </a>
+        </div>
       </div>
 
       {/* Customer Reassurance & Decision Anxiety Relief Banner */}

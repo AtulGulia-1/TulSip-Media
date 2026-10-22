@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { DESIGN_TOKENS } from '../theme/tokens';
 
 const navLinks = [
+  { name: 'websites', path: '/website-development', className: '' },
   { name: 'solutions', path: '/#solutions', className: '' },
   { name: 'case studies', path: '/case-studies', className: '' },
   { name: 'ads', path: '/ads', className: '' },

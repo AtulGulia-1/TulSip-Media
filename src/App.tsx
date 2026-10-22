@@ -11,6 +11,7 @@ const ViktorOddyCaseStudy = lazy(() => import('./pages/ViktorOddyCaseStudy/index
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
 const CareersPage = lazy(() => import('./pages/CareersPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
+const WebsiteDevelopmentPage = lazy(() => import('./pages/WebsiteDevelopmentPage'));
 const SocialWorksPage = lazy(() => import('./pages/SocialPage'));
 const AdsPage = lazy(() => import('./pages/AdsPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
@@ -153,6 +154,9 @@ const App = () => {
           <Route path="/work/local-business-digital-gap" element={<Navigate to="/case-studies/local-business-digital-gap" replace />} />
           <Route path="/case-studies/viktor-oddy" element={<Navigate to="/case-studies/local-business-digital-gap" replace />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/website-development" element={<WebsiteDevelopmentPage />} />
+          <Route path="/web-development" element={<Navigate to="/website-development" replace />} />
+          <Route path="/web-design" element={<Navigate to="/website-development" replace />} />
           <Route path="/social" element={<SocialWorksPage />} />
           <Route path="/ads" element={<AdsPage />} />
           <Route path="/careers" element={<CareersPage />} />

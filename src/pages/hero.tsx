@@ -273,10 +273,10 @@ const Hero = () => {
             Local brands. Global Voices.
           </p>
           <h1 className="mt-2 font-general text-lg font-bold tracking-tight text-light-beige sm:text-xl md:text-2xl">
-            Website Development for Businesses Ready to Grow
+            Website Design &amp; Development and Digital Marketing Agency
           </h1>
           <p className="mt-2 max-w-md font-robert-regular text-sm leading-relaxed text-light-beige/90 max-lg:text-xs">
-            TulSip Media designs and develops purposeful websites, e-commerce storefronts, and custom web applications that help businesses communicate their value, build credibility, and turn visitors into meaningful enquiries.
+            TulSip Media designs and engineers custom business websites, high-performing e-commerce storefronts, and bespoke web applications, paired with data-driven digital marketing, SEO, and brand growth strategies that turn visitors into lasting client relationships.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <a
@@ -288,11 +288,18 @@ const Hero = () => {
               <SendHorizontal fill="#1E1110" size={12} /> Discuss Your Project
             </a>
             <a
-              href="/case-studies"
-              onClick={() => trackAnalyticsEvent('portfolio_item_click', { item_slug: 'hero_explore_work' })}
+              href="/website-development"
+              onClick={() => trackAnalyticsEvent('web_dev_cta_click', { cta_location: 'hero_secondary' })}
               className="center w-fit gap-x-1.5 rounded-2xl border border-royal-beige/50 bg-deep-dark/65 px-5 py-2.5 font-general text-[0.7rem] font-semibold uppercase tracking-wider text-light-beige backdrop-blur-sm transition-colors hover:border-royal-beige hover:bg-dark-brown/80"
             >
-              Explore Our Work <ArrowUpRight size={13} />
+              Web Services <ArrowUpRight size={13} />
+            </a>
+            <a
+              href="/case-studies"
+              onClick={() => trackAnalyticsEvent('portfolio_item_click', { item_slug: 'hero_explore_work' })}
+              className="center w-fit gap-x-1.5 rounded-2xl border border-royal-beige/30 bg-deep-dark/40 px-4 py-2.5 font-general text-[0.7rem] font-medium uppercase tracking-wider text-light-beige/80 backdrop-blur-sm transition-colors hover:border-royal-beige/60 hover:text-light-beige"
+            >
+              Case Studies <ArrowUpRight size={13} />
             </a>
           </div>
         </div>
