@@ -8,8 +8,8 @@ interface PageMetaProps {
   ogImage?: string;
 }
 
-const BASE_URL = 'https://tulsipmedia.com';
-const DEFAULT_OG_IMAGE = 'https://tulsipmedia.com/img/og-preview.png';
+const BASE_URL = 'https://www.tulsipmedia.com';
+const DEFAULT_OG_IMAGE = 'https://www.tulsipmedia.com/img/og-preview.png';
 
 const PageMeta = ({
   title,

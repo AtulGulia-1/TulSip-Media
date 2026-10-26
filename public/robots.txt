@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://tulsipmedia.com/sitemap.xml
+Sitemap: https://www.tulsipmedia.com/sitemap.xml
