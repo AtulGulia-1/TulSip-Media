@@ -6,6 +6,28 @@ interface AnimatedLetterProps {
   className?: string;
 }
 
+interface CharProps {
+  char: string;
+  index: number;
+  totalChars: number;
+  scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
+}
+
+const AnimatedChar = ({ char, index, totalChars, scrollYProgress }: CharProps) => {
+  const start = index / totalChars;
+  const opacity = useTransform(
+    scrollYProgress,
+    [Math.max(0, start - 0.1), Math.min(1, start + 0.05)],
+    [0.2, 1]
+  );
+
+  return (
+    <motion.span style={{ opacity }} className="inline-block">
+      {char === ' ' ? '\u00A0' : char}
+    </motion.span>
+  );
+};
+
 const AnimatedLetter = ({ text, className = '' }: AnimatedLetterProps) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
   
@@ -19,28 +41,15 @@ const AnimatedLetter = ({ text, className = '' }: AnimatedLetterProps) => {
 
   return (
     <p ref={containerRef} className={`inline-flex flex-wrap ${className}`}>
-      {chars.map((char, index) => {
-        // Calculate the range for this specific character
-        const start = index / totalChars;
-        
-        // We use a slightly expanded range to make the transition smoother
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const opacity = useTransform(
-          scrollYProgress,
-          [Math.max(0, start - 0.1), Math.min(1, start + 0.05)],
-          [0.2, 1]
-        );
-
-        return (
-          <motion.span
-            key={index}
-            style={{ opacity }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        );
-      })}
+      {chars.map((char, index) => (
+        <AnimatedChar
+          key={index}
+          char={char}
+          index={index}
+          totalChars={totalChars}
+          scrollYProgress={scrollYProgress}
+        />
+      ))}
     </p>
   );
 };

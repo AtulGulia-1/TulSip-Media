@@ -71,6 +71,69 @@ function attach404StatusInterceptor(rawRes: unknown) {
   };
 }
 
+const ROUTE_METADATA: Record<string, { title: string; description: string; canonical: string }> = {
+  '/website-development': {
+    title: 'Custom Website Design & Development Services | TulSip Media',
+    description: 'TulSip Media designs and develops custom business websites, high-converting landing pages, e-commerce storefronts, and web applications built for speed, credibility, and growth.',
+    canonical: 'https://www.tulsipmedia.com/website-development',
+  },
+  '/ads': {
+    title: 'Paid Media & Conversion Landing Page Systems | TulSip Media',
+    description: 'Explore how TulSip Media aligns paid search and social ad campaigns with fast, conversion-focused landing pages and structured audience testing.',
+    canonical: 'https://www.tulsipmedia.com/ads',
+  },
+  '/social': {
+    title: 'Social Media Content & Brand Creative Systems | TulSip Media',
+    description: "Explore TulSip Media's social-first brand storytelling, educational carousels, short-form video production, and creative systems connected to your website.",
+    canonical: 'https://www.tulsipmedia.com/social',
+  },
+  '/ai-automation': {
+    title: 'Web Workflow & AI Automation Systems | TulSip Media',
+    description: "Explore TulSip Media's custom web workflow automations, lead-routing assistants, and operational integrations built around your website.",
+    canonical: 'https://www.tulsipmedia.com/ai-automation',
+  },
+  '/audit': {
+    title: 'Website & Digital Performance Audit | TulSip Media',
+    description: 'Request a plain-English audit of your existing website, user journeys, and discoverability with TulSip Media.',
+    canonical: 'https://www.tulsipmedia.com/audit',
+  },
+  '/about': {
+    title: 'About TulSip Media | Creative Engineering & Brand Performance',
+    description: 'Learn about TulSip Media, our mission, standards, and the multidisciplinary team building modern websites and growth systems.',
+    canonical: 'https://www.tulsipmedia.com/about',
+  },
+  '/case-studies': {
+    title: 'Client Case Studies & Digital Portfolio | TulSip Media',
+    description: 'Real business results, technical architecture, and creative execution across TulSip Media client projects.',
+    canonical: 'https://www.tulsipmedia.com/case-studies',
+  },
+  '/case-studies/nucleus-derma-care-d2c-skincare': {
+    title: 'Nucleus Derma Care Case Study | TulSip Media',
+    description: 'D2C skincare e-commerce platform and conversion journey case study by TulSip Media.',
+    canonical: 'https://www.tulsipmedia.com/case-studies/nucleus-derma-care-d2c-skincare',
+  },
+  '/case-studies/local-business-digital-gap': {
+    title: 'Local Business Digital Gap Case Study | TulSip Media',
+    description: 'Bridging the local business digital discovery gap through high-performance web presence.',
+    canonical: 'https://www.tulsipmedia.com/case-studies/local-business-digital-gap',
+  },
+  '/careers': {
+    title: 'Careers & Student Credential Verification | TulSip Media',
+    description: 'Explore internship opportunities and verify student NOC and credential references with TulSip Media.',
+    canonical: 'https://www.tulsipmedia.com/careers',
+  },
+  '/contact': {
+    title: 'Contact TulSip Media | Website Development & Growth Enquiries',
+    description: 'Contact TulSip Media to discuss your custom business website, e-commerce storefront, landing page, or web application project.',
+    canonical: 'https://www.tulsipmedia.com/contact',
+  },
+  '/policies': {
+    title: 'Policies, Terms of Service & Privacy | TulSip Media',
+    description: 'Terms of service, privacy practices, and client engagement framework for TulSip Media.',
+    canonical: 'https://www.tulsipmedia.com/policies',
+  },
+};
+
 function spaGenuine404Plugin(): Plugin {
   return {
     name: 'tulsip-genuine-404-status',
@@ -94,11 +157,34 @@ function spaGenuine404Plugin(): Plugin {
     generateBundle(_, bundle) {
       const indexAsset = bundle['index.html'];
       if (indexAsset && indexAsset.type === 'asset') {
+        const rawHtml = String(indexAsset.source);
+
         this.emitFile({
           type: 'asset',
           fileName: '404.html',
-          source: indexAsset.source,
+          source: rawHtml,
         });
+
+        // Emit route-specific static HTML with accurate canonical & metadata
+        for (const [routePath, meta] of Object.entries(ROUTE_METADATA)) {
+          let routeHtml = rawHtml;
+          routeHtml = routeHtml.replace(/<title>.*?<\/title>/i, `<title>${meta.title}</title>`);
+          routeHtml = routeHtml.replace(/<meta\s+name="title"\s+content=".*?"\s*\/?>/i, `<meta name="title" content="${meta.title}" />`);
+          routeHtml = routeHtml.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${meta.description}" />`);
+          routeHtml = routeHtml.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${meta.title}" />`);
+          routeHtml = routeHtml.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${meta.description}" />`);
+          routeHtml = routeHtml.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${meta.canonical}" />`);
+          routeHtml = routeHtml.replace(/<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/i, `<meta name="twitter:title" content="${meta.title}" />`);
+          routeHtml = routeHtml.replace(/<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/i, `<meta name="twitter:description" content="${meta.description}" />`);
+          routeHtml = routeHtml.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/i, `<link rel="canonical" href="${meta.canonical}" />`);
+
+          const cleanPath = routePath.replace(/^\//, '');
+          this.emitFile({
+            type: 'asset',
+            fileName: `${cleanPath}/index.html`,
+            source: routeHtml,
+          });
+        }
       }
     },
   };

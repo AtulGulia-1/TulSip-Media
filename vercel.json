@@ -41,51 +41,51 @@
     },
     {
       "source": "/website-development",
-      "destination": "/index.html"
+      "destination": "/website-development/index.html"
     },
     {
       "source": "/about",
-      "destination": "/index.html"
+      "destination": "/about/index.html"
     },
     {
       "source": "/case-studies",
-      "destination": "/index.html"
+      "destination": "/case-studies/index.html"
     },
     {
       "source": "/case-studies/nucleus-derma-care-d2c-skincare",
-      "destination": "/index.html"
+      "destination": "/case-studies/nucleus-derma-care-d2c-skincare/index.html"
     },
     {
       "source": "/case-studies/local-business-digital-gap",
-      "destination": "/index.html"
+      "destination": "/case-studies/local-business-digital-gap/index.html"
     },
     {
       "source": "/ads",
-      "destination": "/index.html"
+      "destination": "/ads/index.html"
     },
     {
       "source": "/social",
-      "destination": "/index.html"
+      "destination": "/social/index.html"
     },
     {
       "source": "/ai-automation",
-      "destination": "/index.html"
+      "destination": "/ai-automation/index.html"
     },
     {
       "source": "/audit",
-      "destination": "/index.html"
+      "destination": "/audit/index.html"
     },
     {
       "source": "/careers",
-      "destination": "/index.html"
+      "destination": "/careers/index.html"
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/contact/index.html"
     },
     {
       "source": "/policies",
-      "destination": "/index.html"
+      "destination": "/policies/index.html"
     }
   ],
   "headers": [

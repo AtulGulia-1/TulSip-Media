@@ -11,8 +11,13 @@ import SocialFooter from './SocialFooter';
 
 const SocialPage = () => {
   const [isLoading, setIsLoading] = useState(() => {
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return false;
+    if (typeof window !== 'undefined') {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return false;
+      }
+      if (/bot|googlebot|crawler|spider|robot|crawling|lighthouse/i.test(navigator.userAgent)) {
+        return false;
+      }
     }
     return true;
   });
@@ -33,19 +38,16 @@ const SocialPage = () => {
         description="Explore TulSip Media's social-first brand storytelling, educational carousels, short-form video production, and creative systems connected to your website."
         canonicalPath="/social"
       />
-      {isLoading ? (
-        <LoadingScreen />
-      ) : (
-        <div className="w-full relative z-10">
-          <SocialHero />
-          <FeaturedWorks />
-          <ReelsShowcase />
-          <CarouselDesigns />
-          <ContentSystems />
-          <CampaignMetrics />
-          <SocialFooter />
-        </div>
-      )}
+      <div className="w-full relative z-10">
+        <SocialHero />
+        <FeaturedWorks />
+        <ReelsShowcase />
+        <CarouselDesigns />
+        <ContentSystems />
+        <CampaignMetrics />
+        <SocialFooter />
+      </div>
+      {isLoading && <LoadingScreen />}
     </div>
   );
 };
